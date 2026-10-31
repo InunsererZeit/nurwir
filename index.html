@@ -7,8 +7,8 @@
   <title>In unserer Zeit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=engraving-1">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=engraving-2">
 </head>
 <body>
   <div class="intro-screen" id="intro-screen">
@@ -16,7 +16,7 @@
   </div>
   <div class="page">
     <main aria-label="이야기가 담긴 네 개의 사물">
-      <div class="collage" id="collage"></div>
+      <div class="collage" id="collage"><div class="watch-bubble" id="watch-bubble" role="status" hidden><span lang="de">Psst… die Zeit macht gerade Pause.</span><span>시간도 잠깐 쉬어가는 중이에요.</span></div></div>
     </main>
   </div>
   <dialog id="reading-window" aria-labelledby="window-title" aria-describedby="window-copy">
@@ -24,16 +24,25 @@
     <div class="window-body"><h2 id="window-title" tabindex="-1"></h2><p class="copy" id="window-copy"></p><p class="sample">예시 글 · 나만의 이야기로 바꿔주세요.</p></div>
   </dialog>
   <template id="newspaper-template"><span class="newspaper" lang="de">
-<span class="news-meta"><span>Großherzogthum Mecklenburg-Strelitz.</span><span>Frühjahr 1905.</span></span>
+<span class="news-datebar"><span>Nr. 79.</span><span>Neustrelitz, Freitag, den 7. April 1905.</span><span>57. Jahrgang.</span></span>
 <span class="news-masthead">Neustrelitzer Zeitung</span>
-<span class="news-rule">Nachrichten aus Stadt und Land.</span>
-<span class="news-lead">Der Erbgroßherzog<br>im Carolinenstift.</span>
-<span class="news-article">Seine Königliche Hoheit der Erbgroßherzog stattete gestern dem Carolinenstift einen Besuch ab. Unter Führung des leitenden Arztes besichtigte der hohe Gast die Krankensäle, die Küche und die Einrichtungen zur Pflege der Genesenden. Er erkundigte sich nach der Versorgung der Kranken und ließ sich die tägliche Arbeit der Schwestern erläutern. Beim Abschiede sprach Seine Königliche Hoheit dem ärztlichen Personal und den Pflegerinnen seinen Dank für ihren aufopfernden Dienst aus.</span>
-<span class="news-columns">
-<span><strong>Vom Wochenmarkte.</strong> Auf dem Marktplatze herrschte am Vormittag reges Leben. Aus den umliegenden Dörfern waren Händler mit Eiern, Butter und frischem Gemüse eingetroffen. Die Hausfrauen prüften die Waren mit Bedacht; vor den Blumenständen fanden sich bereits die ersten Frühlingsboten.<br><br><strong>Musik im Schloßgarten.</strong> Für den kommenden Sonntag ist bei günstiger Witterung ein kleines Nachmittagskonzert vorgesehen. Neben bekannten Märschen sollen auch heitere Walzer erklingen. Die Spaziergänger dürfen sich auf eine angenehme Stunde im Grünen freuen.</span>
-<span><strong>Aus dem Eisenbahnverkehr.</strong> Am Bahnhofe werden die neuen Anschlagtafeln für den Sommerfahrplan vorbereitet. Reisende werden gebeten, die Abfahrtszeiten vor Antritt ihrer Fahrt nochmals zu prüfen. Für den Ausflugsverkehr nach Berlin erwartet man an den Feiertagen lebhaften Zuspruch.<br><br><strong>Aus der Nachbarschaft.</strong> In der Lesestube werden am Sonnabend neue Bücher ausgelegt. Ferner wird um die Rückgabe entliehener Bände gebeten. Der örtliche Gesangverein versammelt sich am Abend zu seiner wöchentlichen Probe.</span>
+<span class="news-subtitle">Unparteiisches Tageblatt für Stadt und Land.</span>
+<span class="news-business"><span>Bezugspreis vierteljährlich 1 Mark 50 Pf.<br>Durch die Post und unsere Boten zu beziehen.</span><span>Anzeigen finden die weiteste Verbreitung.<br>Annahme täglich bis zum Vormittage.</span></span>
+<span class="news-body">
+<span><strong>Der Erbgroßherzog<br>im Carolinenstift.</strong><span class="news-article">Seine Königliche Hoheit der Erbgroßherzog stattete gestern dem Carolinenstift einen Besuch ab. Unter Führung des leitenden Arztes besichtigte der hohe Gast die Krankensäle, die Küche und die Einrichtungen zur Pflege der Genesenden. Er erkundigte sich nach der Versorgung der Kranken und ließ sich die tägliche Arbeit der Schwestern erläutern. Beim Abschiede sprach Seine Königliche Hoheit dem ärztlichen Personal und den Pflegerinnen seinen Dank für ihren aufopfernden Dienst aus.</span><strong>Witterungsbericht.</strong> Nach kühlen Morgenstunden heiteres Frühlingswetter. Mäßiger Wind aus Westen. In den Gärten beginnen die ersten Knospen sich zu öffnen.</span>
+<span><strong>Vom Wochenmarkte.</strong> Auf dem Marktplatze herrschte am Vormittag reges Leben. Aus den umliegenden Dörfern waren Händler mit Eiern, Butter und frischem Gemüse eingetroffen. Die Hausfrauen prüften die Waren mit Bedacht; vor den Blumenständen fanden sich bereits die ersten Frühlingsboten.<strong>Musik im Schloßgarten.</strong> Für den kommenden Sonntag ist bei günstiger Witterung ein kleines Nachmittagskonzert vorgesehen. Neben bekannten Märschen sollen auch heitere Walzer erklingen. Die Spaziergänger dürfen sich auf eine angenehme Stunde im Grünen freuen.<strong>Für die Lesestube.</strong> Neue Bücher liegen am Sonnabend zur Einsicht bereit. Um pünktliche Rückgabe der entliehenen Bände wird gebeten.</span>
+<span><strong>Aus dem Eisenbahnverkehr.</strong> Am Bahnhofe werden die neuen Anschlagtafeln für den Sommerfahrplan vorbereitet. Reisende werden gebeten, die Abfahrtszeiten vor Antritt ihrer Fahrt nochmals zu prüfen. Für den Ausflugsverkehr nach Berlin erwartet man an den Feiertagen lebhaften Zuspruch.<strong>Aus der Nachbarschaft.</strong> Der örtliche Gesangverein versammelt sich am Abend zu seiner wöchentlichen Probe. Neue Mitglieder sind willkommen.<strong>Kleine Mittheilungen.</strong> Im Schaufenster der Buchhandlung sind neue Ansichten aus der Residenz ausgestellt. Auch Schreibpapiere und Briefkarten werden in gefälliger Auswahl angeboten.</span>
 </span>
-<span class="news-colophon">Literarische Rekonstruktion · Aus unserer Zeit.</span>
+<span class="news-ad-heading">Anzeigen und Bekanntmachungen.</span>
+<span class="news-adverts">
+<span class="advert ornate"><b>Feine<br>Damen-Handschuhe.</b><span>Glacé, weiß und schwarz.<br>Sorgfältige Ausführung.<br>Handschuhhandlung am Markte.</span></span>
+<span class="advert"><b>Uhren &amp;<br>Bijouterien.</b><span>Taschenuhren jeder Art.<br>Reparaturen gewissenhaft.<br>Gold- und Silberwaaren.</span></span>
+<span class="advert double"><b>Bücher!<br>Schreibpapiere!</b><span>Neue Romane, Briefkarten<br>und elegante Couverts.<br>Buchhandlung an der Stadtkirche.</span></span>
+<span class="advert"><b>Photographisches<br>Atelier.</b><span>Bildnisse in jeder Größe.<br>Aufnahmen auch Sonntags.<br>Ansichtskarten der Residenz.</span></span>
+<span class="advert double"><b>Frühjahrs-<br>Neuheiten.</b><span>Feine Stoffe und Bänder.<br>Weiße Wäsche, Kragen,<br>Spitzen und Besätze.</span></span>
+<span class="advert ornate"><b>Kaffee &amp;<br>Colonialwaaren.</b><span>Frisch geröstet. Feine Thees.<br>Chocoladen und Gewürze.<br>Reelle und billige Preise.</span></span>
+</span>
+<span class="news-colophon">Literarische Rekonstruktion · frei gestaltete Nachrichten und Anzeigen.</span>
 </span></template>
   <template id="letter-template"><span class="letter-sheet" lang="de"><span class="letter-date">Neustrelitz, im Frühling.</span><span class="letter-salutation">Meine liebe Freundin,</span><span>der Morgen liegt still über den Dächern, und vom Garten her zieht ein kühler Wind an mein Fenster. Ich habe die Zeitung neben Deinen letzten Brief gelegt und denke daran, wie viel ein einzelner Tag zu bewahren vermag.</span><span>Gestern führte mich mein Weg am Carolinenstift vorüber. Hinter den Fenstern begann schon früh die Arbeit. Auf dem Markte standen die ersten Blumen; eine ältere Dame trug weiße Handschuhe und blieb lange bei den Veilchen stehen.</span><span>Es sind die kleinen Dinge, die mir im Gedächtnis bleiben: das leise Schlagen einer Uhr, ein Licht im Zimmer, das Band zwischen den Seiten eines Buches. Ich möchte sie sammeln, ehe der Abend sie fortnimmt.</span><span>Schreibe mir bald. Bis dahin lege ich diesen Brief zu den anderen Erinnerungen.</span><span class="letter-signature">In treuer Verbundenheit.</span></span></template>
   <script>
@@ -52,17 +61,15 @@
     const articleText = 'Seine Königliche Hoheit der Erbgroßherzog stattete gestern dem Carolinenstift einen Besuch ab. Unter Führung des leitenden Arztes besichtigte der hohe Gast die Krankensäle, die Küche und die Einrichtungen zur Pflege der Genesenden. Er erkundigte sich nach der Versorgung der Kranken und ließ sich die tägliche Arbeit der Schwestern erläutern. Beim Abschiede sprach Seine Königliche Hoheit dem ärztlichen Personal und den Pflegerinnen seinen Dank für ihren aufopfernden Dienst aus.';
     const objects = [
       {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope.png',x:6,y:5,width:50,angle:-15,layer:3,category:'01 / A LETTER',title:'나를 소개합니다.',text:'봉투를 열면 펼쳐지는 나의 이야기.\n\n이곳에 원하는 소개글을 써주세요.'},
-      {id:'candle',label:'촛대와 초 — 작은 생각',image:'engraved-candle.png',x:72,y:7,width:25,angle:8,layer:8,category:'02 / CANDLELIGHT',title:'촛불 곁의 생각.',text:'고요한 빛 아래에 남겨두고 싶은 문장들.\n\n이곳에 두 번째 글을 써주세요.'},
-      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:37,y:26,width:46,angle:-1,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
+      {id:'candle',label:'촛대와 초 — 작은 생각',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,category:'02 / CANDLELIGHT',title:'촛불 곁의 생각.',text:'고요한 빛 아래에 남겨두고 싶은 문장들.\n\n이곳에 두 번째 글을 써주세요.'},
+      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:72,y:67,width:25,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
-      {id:'ribbon',image:'engraved-ribbon.png',x:20,y:0,width:42,angle:33,layer:1},
-      {id:'letter-sheet',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
-      {id:'postcard',image:'engraved-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
-      {id:'watch',image:'engraved-watch.png',x:23,y:76,width:23,angle:-8,layer:9},
-      {id:'key',image:'engraved-key.png',x:4,y:30,width:11,angle:19,layer:9},
-      {id:'pearls',image:'engraved-pearls.png',x:2,y:65,width:65,angle:-6,layer:20}
+      {id:'letter-sheet',label:'신문 아래의 편지글',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
+      {id:'postcard',label:'셰퍼드 엽서',image:'engraved-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
+      {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:23,y:76,width:23,angle:-8,layer:9},
+      {id:'key',label:'오래된 열쇠',image:'engraved-key.png',x:40,y:1,width:22,angle:68,layer:9},
     ];
     const collage = document.getElementById('collage');
     const readingWindow = document.getElementById('reading-window');
@@ -70,6 +77,7 @@
     let selected = null;
     let returnFocus = null;
     function selectObject(object, button) {
+      hideWatchBubble();
       if (selected) {
         selected.classList.remove('is-selected');
         selected.setAttribute('aria-expanded','false');
@@ -85,34 +93,78 @@
       document.querySelector('.window-body').scrollTop = 0;
       windowTitle.focus({preventScroll:true});
     }
-    function placeItem(item, interactive) {
-      const element = document.createElement(interactive ? 'button' : 'div');
-      element.className = interactive ? 'object' : 'decoration';
-      element.dataset.object = item.id;
-      if (interactive) {
-        element.type = 'button';
-        element.setAttribute('aria-label',item.label);
-        element.setAttribute('aria-controls','reading-window');
-        element.setAttribute('aria-expanded','false');
-      } else { element.setAttribute('aria-hidden','true'); }
-      for (const [name,value] of Object.entries({x:item.x+'%',y:item.y+'%',width:item.width+'%',angle:item.angle+'deg',layer:item.layer})) element.style.setProperty('--'+name,value);
-      if (item.kind) {
+    const watchBubble=document.getElementById('watch-bubble');
+    let watchButton=null;
+    function hideWatchBubble(){watchBubble.hidden=true;if(watchButton)watchButton.setAttribute('aria-expanded','false');}
+    const nudgeTimers=new WeakMap();
+    function nudge(element){
+      clearTimeout(nudgeTimers.get(element));
+      element.classList.remove('is-nudging');
+      void element.offsetWidth;
+      element.classList.add('is-nudging');
+      nudgeTimers.set(element,setTimeout(()=>element.classList.remove('is-nudging'),700));
+    }
+    function activate(item,element){
+      if(item.popup){selectObject(item,element);return;}
+      nudge(element);
+      if(item.action==='watch'){
+        const show=watchBubble.hidden;
+        hideWatchBubble();
+        watchBubble.hidden=!show;
+        element.setAttribute('aria-expanded',String(show));
+      }else{hideWatchBubble();}
+    }
+    const itemByElement=new Map();
+    function placeItem(item,popup){
+      item.popup=popup;
+      const element=document.createElement('button');
+      element.type='button';
+      element.className=popup?'object':'object prop';
+      element.dataset.object=item.id;
+      element.setAttribute('aria-label',item.label);
+      if(popup){element.setAttribute('aria-controls','reading-window');element.setAttribute('aria-expanded','false');}
+      if(item.action==='watch'){watchButton=element;element.setAttribute('aria-controls','watch-bubble');element.setAttribute('aria-expanded','false');}
+      for(const [name,value] of Object.entries({x:item.x+'%',y:item.y+'%',width:item.width+'%',angle:item.angle+'deg',layer:item.layer}))element.style.setProperty('--'+name,value);
+      if(item.kind){
         element.classList.add('printed-object');
-        const template = document.getElementById(item.kind === 'newspaper' ? 'newspaper-template' : 'letter-template');
-        element.append(template.content.cloneNode(true));
-      } else {
+        element.append(document.getElementById(item.kind==='newspaper'?'newspaper-template':'letter-template').content.cloneNode(true));
+      }else{
         element.style.setProperty('--image','url("'+item.image+'")');
-        const image = document.createElement('img');
-        image.src=item.image;
-        image.alt='';
-        image.draggable=false;
-        element.append(image);
+        const image=document.createElement('img');image.src=item.image;image.alt='';image.draggable=false;element.append(image);
       }
-      if (interactive) element.addEventListener('click',()=>selectObject(item,element));
+      itemByElement.set(element,item);
       collage.append(element);
     }
     decorations.forEach(item=>placeItem(item,false));
     objects.forEach(item=>placeItem(item,true));
+    // 투명 이미지의 빈 부분은 아래에 있는 사물을 선택하도록 통과시킵니다.
+    const alphaCanvases=new WeakMap();
+    function hitsInk(element,event){
+      const img=element.querySelector('img');
+      if(!img||!img.complete||!img.naturalWidth)return true;
+      try{
+        const style=getComputedStyle(element),origin=style.transformOrigin.split(' ').map(parseFloat),board=collage.getBoundingClientRect();
+        const point=new DOMPoint(event.clientX-board.left-element.offsetLeft-origin[0],event.clientY-board.top-element.offsetTop-origin[1]);
+        const local=new DOMMatrix(style.transform).inverse().transformPoint(point);
+        const x=local.x+origin[0],y=local.y+origin[1];
+        if(x<0||y<0||x>=element.offsetWidth||y>=element.offsetHeight)return false;
+        let canvas=alphaCanvases.get(img);
+        if(!canvas){canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d',{willReadFrequently:true}).drawImage(img,0,0);alphaCanvases.set(img,canvas);}
+        return canvas.getContext('2d').getImageData(Math.floor(x/element.offsetWidth*canvas.width),Math.floor(y/element.offsetHeight*canvas.height),1,1).data[3]>24;
+      }catch{return true;}
+    }
+    collage.addEventListener('click',event=>{
+      if(event.target.closest('.watch-bubble'))return;
+      let target=null;
+      if(event.detail===0){target=event.target.closest('.object');}
+      else{
+        const candidates=[...new Set(document.elementsFromPoint(event.clientX,event.clientY).map(e=>e.closest('.object')).filter(e=>e&&collage.contains(e)))];
+        target=candidates.find(element=>hitsInk(element,event));
+      }
+      if(target&&itemByElement.has(target))activate(itemByElement.get(target),target);
+      else hideWatchBubble();
+    });
+    document.addEventListener('click',event=>{if(!collage.contains(event.target))hideWatchBubble();});
     // 창 바깥(투명한 배경)을 클릭하면 닫습니다. 창 안의 여백은 닫히지 않습니다.
     readingWindow.addEventListener('click',event=>{
       const bounds = readingWindow.getBoundingClientRect();
@@ -130,7 +182,7 @@
       if (returnFocus) returnFocus.focus({preventScroll:true});
     });
     document.addEventListener('keydown',event=>{
-      if(event.key==='Escape' && readingWindow.open){event.preventDefault(); readingWindow.close();}
+      if(event.key==='Escape'){hideWatchBubble();if(readingWindow.open){event.preventDefault();readingWindow.close();}}
     });
   </script>
 </body>

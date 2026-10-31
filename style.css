@@ -41,28 +41,44 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 @keyframes logo-arrive { from { opacity:0; transform:translateY(16px); filter:blur(3px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
 @media(prefers-reduced-motion:reduce) { .intro-logo,.intro-leaving .intro-logo { transform:none; filter:none; } }
 
-/* 새 삽화 콜라주: 진주는 최상단, 장식은 클릭을 가로막지 않습니다. */
-.decoration { position:absolute; left:var(--x); top:var(--y); width:var(--width); transform:rotate(var(--angle)); z-index:var(--layer); pointer-events:none; filter:drop-shadow(0 2px 2px #00000012); }
-.decoration img { display:block; width:100%; height:auto; filter:grayscale(1); }
+
+/* 모든 사물은 클릭 가능. 팝업이 없는 사물도 살짝 움직입니다. */
 .object { filter:drop-shadow(0 3px 2px #00000016); }
 .object.is-selected { z-index:15; }
+.prop.is-nudging { z-index:16; animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
+.prop.is-nudging::after { animation:object-tint .65s ease; }
+@keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-8px) rotate(calc(var(--angle) + 3deg)) scale(1.025); } 70% { transform:translateY(-3px) rotate(calc(var(--angle) - 1deg)); } }
+@keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
 .printed-object { text-align:left; }
 .printed-object::after { mask:none; -webkit-mask:none; }
-.newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; font-family:"UnifrakturMaguntia",serif; border:.12cqw solid #999; overflow:hidden; }
-.newspaper { aspect-ratio:410 / 548; padding:4.2%; box-shadow:inset 0 0 2cqw #00000009; }
+.newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; font-family:"UnifrakturMaguntia",serif; border:.1cqw solid #999; overflow:hidden; }
+.newspaper { display:flex; flex-direction:column; aspect-ratio:620 / 760; padding:2.8%; box-shadow:inset 0 0 2cqw #00000009; }
 .newspaper span { display:block; }
-.news-meta { display:flex!important; justify-content:space-between; gap:1cqw; font-size:.7cqw; border-top:.2cqw solid #222; padding:.8cqw 0; }
-.news-masthead { font-size:3.65cqw; white-space:nowrap; line-height:1.25; text-align:center; letter-spacing:-.035em; padding:.7cqw 0 1cqw; border-top:.12cqw solid #333; border-bottom:.35cqw double #222; }
-.news-rule { text-align:center; font-size:.9cqw; padding:.6cqw 0; border-bottom:.1cqw solid #777; }
-.news-lead { text-align:center; font-size:2.15cqw; line-height:1.15; margin:1.1cqw 0; }
-.news-article { text-align:justify; font-size:1.02cqw; line-height:1.24; padding-bottom:1cqw; margin-bottom:1cqw; border-bottom:.15cqw solid #444; }
-.news-article::first-letter { float:left; font-size:3.2cqw; line-height:.85; margin:.3cqw .4cqw 0 0; }
-.news-columns { display:grid!important; grid-template-columns:1fr 1fr; gap:1.5cqw; font-size:.96cqw; line-height:1.25; text-align:justify; }
-.news-columns>span+span { border-left:.1cqw solid #999; padding-left:1.3cqw; }
-.news-columns strong { display:block; font-size:1.3cqw; font-weight:400; text-align:left; margin-bottom:.3cqw; }
-.news-colophon { border-top:.1cqw solid #777; text-align:center; font-size:.7cqw; margin-top:1cqw; padding-top:.5cqw; }
+.news-datebar { display:flex!important; justify-content:space-between; font-size:.8cqw; border-top:.15cqw solid #222; padding:.5cqw 0; }
+.news-masthead { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-weight:700; font-size:4.1cqw; white-space:nowrap; line-height:1.13; text-align:center; letter-spacing:-.025em; padding:.4cqw 0 .7cqw; border-top:.1cqw solid #333; }
+.news-subtitle { text-align:center; font-size:1.18cqw; padding:.4cqw 0 .7cqw; border-bottom:.4cqw double #222; }
+.news-business { display:grid!important; grid-template-columns:1fr 1fr; gap:1cqw; text-align:center; font-size:.82cqw; line-height:1.2; padding:.65cqw 0; border-bottom:.1cqw solid #444; }
+.news-business>span+span { border-left:.1cqw solid #777; }
+.news-body { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); flex:1; gap:1.2cqw; padding-top:1cqw; font-size:1cqw; line-height:1.22; text-align:justify; }
+.news-body>span+span { border-left:.1cqw solid #aaa; padding-left:1cqw; }
+.news-body strong { display:block; font-size:1.42cqw; font-weight:400; line-height:1.1; text-align:center; margin:.9cqw 0 .55cqw; }
+.news-body strong:first-child { margin-top:0; }
+.news-article::first-letter { float:left; font-size:3cqw; line-height:.85; margin:.25cqw .35cqw 0 0; }
+.news-ad-heading { text-align:center; font-size:1.6cqw; border-top:.3cqw double #333; margin-top:1cqw; padding:.65cqw 0; }
+.news-adverts { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:1fr 1fr; gap:.7cqw; min-height:20cqw; }
+.advert { border:.1cqw solid #444; padding:.65cqw .45cqw; text-align:center; font-size:.87cqw; line-height:1.18; display:flex!important; flex-direction:column; justify-content:center; }
+.advert b { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-size:1.85cqw; font-weight:700; line-height:1.03; margin-bottom:.5cqw; }
+.advert.double { border:.4cqw double #333; }
+.advert.ornate { outline:.08cqw solid #555; outline-offset:-.55cqw; }
+.news-colophon { text-align:center; font-size:.66cqw; margin-top:.65cqw; padding-top:.4cqw; border-top:.1cqw solid #777; }
 .letter-sheet { min-height:55cqw; padding:3cqw 3.2cqw; font-size:1.45cqw; line-height:1.55; box-shadow:inset 0 0 3cqw #00000008; }
 .letter-sheet>span { display:block; margin-bottom:1.6cqw; }
 .letter-sheet .letter-date { text-align:right; font-size:1.3cqw; }
 .letter-sheet .letter-salutation { font-size:2cqw; }
 .letter-sheet .letter-signature { text-align:right; font-size:1.8cqw; }
+.watch-bubble { position:absolute; left:7%; bottom:24%; z-index:35; width:min(190px,54cqw); background:#fff; color:#555; border:1px solid #aaa; border-radius:9px; padding:12px 14px; box-shadow:0 5px 22px #00000012; font-family:"Gowun Dodum",sans-serif; font-size:11px; line-height:1.7; animation:bubble-in .2s ease-out; }
+.watch-bubble[hidden] { display:none; }
+.watch-bubble::after { content:""; position:absolute; bottom:-6px; left:47%; width:10px; height:10px; background:#fff; border-right:1px solid #aaa; border-bottom:1px solid #aaa; transform:rotate(45deg); }
+.watch-bubble span { display:block; }
+.watch-bubble span[lang] { font-family:"Playfair Display",serif; font-size:13px; color:#222; margin-bottom:5px; }
+@keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
