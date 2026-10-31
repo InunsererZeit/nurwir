@@ -2,10 +2,10 @@
 * { box-sizing:border-box; }
 body { margin:0; background:#fff; color:var(--ink); font-family:"Playfair Display","Gowun Dodum",serif; -webkit-font-smoothing:antialiased; }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
-.page { max-width:500px; width:100%; min-height:100svh; margin:auto; padding:24px 16px; display:flex; flex-direction:column; opacity:0; transition:opacity .4s ease; }
-main { width:100%; margin:auto 0; padding:14px 0 16px; }
+.page { max-width:600px; width:100%; min-height:100svh; margin:auto; padding:16px 14px; display:flex; flex-direction:column; opacity:0; transition:opacity .4s ease; }
+main { width:100%; margin:auto 0; padding:0; }
 /* 모든 기기에서 같은 비율과 배치. 좌표는 index.html의 objects에서 수정합니다. */
-.collage { position:relative; width:min(100%,440px,calc(80svh - 100px)); aspect-ratio:440 / 520; margin:0 auto; isolation:isolate; }
+.collage { position:relative; width:min(100%,540px,calc(78svh - 10px)); aspect-ratio:900 / 1100; container-type:inline-size; margin:0 auto; isolation:isolate; }
 .object { position:absolute; left:var(--x); top:var(--y); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 5px 4px #00000019); }
 .object img { display:block; width:100%; height:auto; filter:grayscale(1); user-select:none; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
@@ -40,3 +40,29 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 @keyframes logo-depart { 0% { opacity:1; filter:blur(0); transform:translateY(0) scale(1); } 45% { opacity:.85; filter:blur(7px); } 100% { opacity:0; filter:blur(18px); transform:translateY(-12px) scale(1.035); } }
 @keyframes logo-arrive { from { opacity:0; transform:translateY(16px); filter:blur(3px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
 @media(prefers-reduced-motion:reduce) { .intro-logo,.intro-leaving .intro-logo { transform:none; filter:none; } }
+
+/* 새 삽화 콜라주: 진주는 최상단, 장식은 클릭을 가로막지 않습니다. */
+.decoration { position:absolute; left:var(--x); top:var(--y); width:var(--width); transform:rotate(var(--angle)); z-index:var(--layer); pointer-events:none; filter:drop-shadow(0 2px 2px #00000012); }
+.decoration img { display:block; width:100%; height:auto; filter:grayscale(1); }
+.object { filter:drop-shadow(0 3px 2px #00000016); }
+.object.is-selected { z-index:15; }
+.printed-object { text-align:left; }
+.printed-object::after { mask:none; -webkit-mask:none; }
+.newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; font-family:"UnifrakturMaguntia",serif; border:.12cqw solid #999; overflow:hidden; }
+.newspaper { aspect-ratio:410 / 548; padding:4.2%; box-shadow:inset 0 0 2cqw #00000009; }
+.newspaper span { display:block; }
+.news-meta { display:flex!important; justify-content:space-between; gap:1cqw; font-size:.7cqw; border-top:.2cqw solid #222; padding:.8cqw 0; }
+.news-masthead { font-size:3.65cqw; white-space:nowrap; line-height:1.25; text-align:center; letter-spacing:-.035em; padding:.7cqw 0 1cqw; border-top:.12cqw solid #333; border-bottom:.35cqw double #222; }
+.news-rule { text-align:center; font-size:.9cqw; padding:.6cqw 0; border-bottom:.1cqw solid #777; }
+.news-lead { text-align:center; font-size:2.15cqw; line-height:1.15; margin:1.1cqw 0; }
+.news-article { text-align:justify; font-size:1.02cqw; line-height:1.24; padding-bottom:1cqw; margin-bottom:1cqw; border-bottom:.15cqw solid #444; }
+.news-article::first-letter { float:left; font-size:3.2cqw; line-height:.85; margin:.3cqw .4cqw 0 0; }
+.news-columns { display:grid!important; grid-template-columns:1fr 1fr; gap:1.5cqw; font-size:.96cqw; line-height:1.25; text-align:justify; }
+.news-columns>span+span { border-left:.1cqw solid #999; padding-left:1.3cqw; }
+.news-columns strong { display:block; font-size:1.3cqw; font-weight:400; text-align:left; margin-bottom:.3cqw; }
+.news-colophon { border-top:.1cqw solid #777; text-align:center; font-size:.7cqw; margin-top:1cqw; padding-top:.5cqw; }
+.letter-sheet { min-height:55cqw; padding:3cqw 3.2cqw; font-size:1.45cqw; line-height:1.55; box-shadow:inset 0 0 3cqw #00000008; }
+.letter-sheet>span { display:block; margin-bottom:1.6cqw; }
+.letter-sheet .letter-date { text-align:right; font-size:1.3cqw; }
+.letter-sheet .letter-salutation { font-size:2cqw; }
+.letter-sheet .letter-signature { text-align:right; font-size:1.8cqw; }
