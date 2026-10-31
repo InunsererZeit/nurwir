@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="275" viewBox="0 0 400 275">
+<rect x="1" y="1" width="398" height="273" fill="#e7e7e5" stroke="#b6b6b1"/>
+<path d="M2 2L200 172 398 2M2 273L146 145M398 273L254 145" fill="none" stroke="#b2b2ad" stroke-width="1.5"/>
+<path d="M3 4L200 167 397 4" fill="#efefed" stroke="#bcbcb6"/>
+<rect x="22" y="21" width="152" height="50" rx="1" fill="#fafafa" transform="rotate(-2 22 21)"/>
+<text x="31" y="39" font-family="Georgia,serif" font-size="16" fill="#282828">In unserer Zeit</text><text x="32" y="54" font-family="Georgia,serif" font-size="7" letter-spacing="1" fill="#555">A LETTER TO YOU / No. 01</text>
+<rect x="333" y="20" width="44" height="56" fill="#333"/><rect x="337" y="24" width="36" height="48" fill="none" stroke="#e9e9e9"/>
+<path d="M344 59Q355 23 366 59M349 55Q354 40 360 55" fill="none" stroke="#eee" stroke-width="2"/><text x="343" y="68" fill="#eee" font-family="serif" font-size="7">POST</text>
+<g fill="none" stroke="#777" stroke-width=".8"><circle cx="321" cy="57" r="19"/><circle cx="321" cy="57" r="16"/><path d="M307 42Q334 29 366 42M309 47Q337 35 377 47M311 52Q340 43 380 53"/></g>
+<rect x="92" y="112" width="215" height="80" fill="#f9f9f7" stroke="#92928e"/><rect x="98" y="118" width="203" height="68" fill="none" stroke="#92928e"/>
+<text x="200" y="147" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="24" fill="#383838">Dear stranger,</text>
+<text x="200" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="2" fill="#777">A LITTLE ABOUT ME</text>
+</svg>
