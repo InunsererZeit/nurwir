@@ -92,4 +92,4 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .object:hover { transform:rotate(var(--angle)); filter:drop-shadow(0 3px 2px #00000016); }
 
 /* 신문 외 영문은 Roboto Slab, 한글은 Gowun Dodum. */
-.letter-sheet { font-family:"Roboto Slab","Gowun Dodum",serif; }
+.letter-sheet { font-family:"Roboto Slab","Gowun Dodum",serif; font-size:1.2cqw; line-height:1.5; }
