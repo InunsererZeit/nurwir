@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=collage-intro-3">
+  <link rel="stylesheet" href="style.css?v=collage-intro-4">
 </head>
 <body>
   <div class="intro-screen" id="intro-screen">
@@ -17,7 +17,6 @@
   <div class="page">
     <main aria-label="이야기가 담긴 네 개의 사물">
       <div class="collage" id="collage"></div>
-      <p class="hint">오브제를 눌러 확인하세요.</p>
     </main>
   </div>
   <dialog id="reading-window" aria-labelledby="window-title" aria-describedby="window-copy">
@@ -25,7 +24,7 @@
     <div class="window-body"><h2 id="window-title" tabindex="-1"></h2><p class="copy" id="window-copy"></p><p class="sample">예시 글 · 나만의 이야기로 바꿔주세요.</p></div>
   </dialog>
   <script>
-    // 인트로는 페이지를 열 때마다 약 0.75초 보여준 뒤 사라집니다.
+    // 인트로는 페이지를 열 때마다 약 0.5초 보여준 뒤 사라집니다.
     const introScreen = document.getElementById('intro-screen');
     const mainPage = document.querySelector('.page');
     mainPage.inert = true;
@@ -35,7 +34,7 @@
         introScreen.hidden = true;
         mainPage.inert = false;
       }, 460);
-    }, 750);
+    }, 500);
     // 교체 안내: image는 이미지 파일 경로입니다. 투명 PNG/SVG를 권장합니다.
     // x, y, width는 캔버스 기준 %, angle은 기울기(도), layer는 겹치는 순서입니다.
     // title과 text를 바꾸면 창 안의 글이 바뀝니다. text 안의 \n은 줄바꿈입니다.
@@ -74,7 +73,7 @@
       document.getElementById('window-category').textContent = object.category;
       windowTitle.textContent = object.title;
       document.getElementById('window-copy').textContent = object.text;
-      if (!readingWindow.open) readingWindow.show();
+      if (!readingWindow.open) readingWindow.showModal();
       document.querySelector('.window-body').scrollTop = 0;
       windowTitle.focus({preventScroll:true});
     }
@@ -99,6 +98,13 @@
       button.append(image);
       button.addEventListener('click',()=>selectObject(object,button));
       collage.append(button);
+    });
+    // 창 바깥(투명한 배경)을 클릭하면 닫습니다. 창 안의 여백은 닫히지 않습니다.
+    readingWindow.addEventListener('click',event=>{
+      const bounds = readingWindow.getBoundingClientRect();
+      const outside = event.clientX < bounds.left || event.clientX > bounds.right ||
+        event.clientY < bounds.top || event.clientY > bounds.bottom;
+      if (event.target === readingWindow && outside) readingWindow.close();
     });
     document.getElementById('close-window').addEventListener('click',()=>readingWindow.close());
     readingWindow.addEventListener('close',()=>{
