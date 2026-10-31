@@ -11,7 +11,7 @@ main { width:100%; margin:auto 0; padding:0; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
 .object:hover { transform:translateY(-3px) rotate(var(--angle)); filter:drop-shadow(0 8px 6px #00000022); }
-.object.is-selected { z-index:8; transform:translateY(-9px) rotate(calc(var(--angle) + 3deg)) scale(1.025); filter:drop-shadow(0 12px 8px #00000022); }
+.object.is-selected { transform:rotate(var(--angle)); }
 .object.is-selected::after { opacity:.78; }
 .object:focus-visible { outline:1px dashed #777; outline-offset:7px; }
 dialog { position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 36px); max-width:262.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #dedede; border-radius:2px; color:var(--ink); background:#fff; box-shadow:0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
@@ -25,7 +25,6 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .window-body { min-height:0; padding:28px 24px; overflow:auto; overscroll-behavior:contain; }
 h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .copy { margin:0; font-size:13px; line-height:2; color:#737373; white-space:pre-wrap; overflow-wrap:anywhere; word-break:keep-all; }
-.sample { margin:25px 0 0; padding-top:15px; border-top:1px solid #eee; color:#aaa; font-size:9px; }
 @keyframes open-note { from { opacity:0; transform:translate(-50%,calc(-50% + 6px)); } to { opacity:1; transform:translate(-50%,-50%); } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } .object.is-selected { transform:rotate(var(--angle)); } }
 
@@ -37,17 +36,17 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .intro-leaving .intro-logo { animation:logo-depart .42s ease-in both; }
 .intro-leaving .intro-screen { opacity:0; visibility:hidden; }
 .intro-leaving .page { opacity:1; transition-delay:.14s; }
-@keyframes logo-depart { 0% { opacity:1; filter:blur(0); transform:translateY(0) scale(1); } 45% { opacity:.85; filter:blur(7px); } 100% { opacity:0; filter:blur(18px); transform:translateY(-12px) scale(1.035); } }
+@keyframes logo-depart { 0% { opacity:1; filter:url(#logo-grain) blur(0); transform:translateY(0) scale(1); } 45% { opacity:.85; filter:url(#logo-grain) blur(3px); } 100% { opacity:0; filter:url(#logo-grain) blur(13px); transform:translateY(-12px) scale(1.035); } }
 @keyframes logo-arrive { from { opacity:0; transform:translateY(16px); filter:blur(3px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
 @media(prefers-reduced-motion:reduce) { .intro-logo,.intro-leaving .intro-logo { transform:none; filter:none; } }
 
 
 /* 모든 사물은 클릭 가능. 팝업이 없는 사물도 살짝 움직입니다. */
 .object { filter:drop-shadow(0 3px 2px #00000016); }
-.object.is-selected { z-index:15; }
-.prop.is-nudging { z-index:16; animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
-.prop.is-nudging::after { animation:object-tint .65s ease; }
-@keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-8px) rotate(calc(var(--angle) + 3deg)) scale(1.025); } 70% { transform:translateY(-3px) rotate(calc(var(--angle) - 1deg)); } }
+
+.object.is-nudging { animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
+.object.is-nudging::after { animation:object-tint .65s ease; }
+@keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 2deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - 1deg)); } }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
 .printed-object { text-align:left; }
 .printed-object::after { mask:none; -webkit-mask:none; }
@@ -86,3 +85,9 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 /* 보정한 원본 사진은 왜곡 없이 얇은 엽서 테두리 안에 배치합니다. */
 .photo-postcard { padding:1cqw; background:#fcfcfc; border:.12cqw solid #aaa; }
 .photo-postcard::after { mask:none; -webkit-mask:none; }
+
+/* 양쪽 푸터와 읽기 영역의 포커스 테두리 보정 */
+.effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
+.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 4px 0; color:#999; font-size:9px; letter-spacing:.04em; flex-shrink:0; }
+#window-title:focus { outline:none; }
+.object:hover { transform:rotate(var(--angle)); filter:drop-shadow(0 3px 2px #00000016); }
