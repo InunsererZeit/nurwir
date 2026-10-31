@@ -85,3 +85,5 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .watch-bubble [role="img"] { filter:grayscale(1); }
 
 .copy strong { font-weight:700; }
+
+.copy .english-names { font-size:11px; opacity:.7; }

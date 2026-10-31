@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=bold-name-1">
+  <link rel="stylesheet" href="style.css?v=copy-emphasis-1">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -86,12 +86,18 @@
       nudge(button);
       button.setAttribute('aria-expanded','true');
       const copy=document.getElementById('window-copy');
-      copy.textContent=object.text;
-      if(object.id==='letter'&&object.text.startsWith('해수')){
-        const name=document.createElement('strong');
-        name.textContent='해수';
-        copy.replaceChildren(name,document.createTextNode(object.text.slice(2)));
-      }
+      copy.replaceChildren();
+      object.text.split('\n').forEach((line,index)=>{
+        if(index)copy.append(document.createTextNode('\n'));
+        if(object.id==='letter'&&index===0&&line.startsWith('해수')){
+          const name=document.createElement('strong');name.textContent='해수';
+          copy.append(name,document.createTextNode(line.slice(2)));
+        }else if((object.id==='letter'&&line==='마법명가 차남으로 살아남는 법')||(object.id==='gloves'&&line==='NG')){
+          const strong=document.createElement('strong');strong.textContent=line;copy.append(strong);
+        }else if(object.id==='letter'&&line==='Albert Mecklenburg × Charlotte Wittelsbach'){
+          const names=document.createElement('span');names.className='english-names';names.textContent=line;copy.append(names);
+        }else{copy.append(document.createTextNode(line));}
+      });
       if (!readingWindow.open) readingWindow.showModal();
       document.querySelector('.window-body').scrollTop = 0;
       document.getElementById('close-window').focus({preventScroll:true});
