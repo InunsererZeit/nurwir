@@ -53,23 +53,23 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; font-family:"UnifrakturMaguntia",serif; border:.1cqw solid #999; overflow:hidden; }
 .newspaper { display:flex; flex-direction:column; aspect-ratio:620 / 760; padding:2.8%; box-shadow:inset 0 0 2cqw #00000009; }
 .newspaper span { display:block; }
-.news-datebar { display:flex!important; justify-content:space-between; font-size:.8cqw; border-top:.15cqw solid #222; padding:.5cqw 0; }
-.news-masthead { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-weight:700; font-size:4.1cqw; white-space:nowrap; line-height:1.13; text-align:center; letter-spacing:-.025em; padding:.4cqw 0 .7cqw; border-top:.1cqw solid #333; }
-.news-subtitle { text-align:center; font-size:1.18cqw; padding:.4cqw 0 .7cqw; border-bottom:.4cqw double #222; }
-.news-business { display:grid!important; grid-template-columns:1fr 1fr; gap:1cqw; text-align:center; font-size:.82cqw; line-height:1.2; padding:.65cqw 0; border-bottom:.1cqw solid #444; }
-.news-business>span+span { border-left:.1cqw solid #777; }
-.news-body { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); flex:1; gap:1.2cqw; padding-top:1cqw; font-size:.9cqw; line-height:1.18; text-align:justify; }
-.news-body>span+span { border-left:.1cqw solid #aaa; padding-left:1cqw; }
-.news-body strong { display:block; font-size:1.32cqw; font-weight:400; line-height:1.1; text-align:center; margin:.9cqw 0 .55cqw; }
+.news-datebar { display:flex!important; justify-content:space-between; font-size:0.96cqw; border-top:0.18cqw solid #222; padding:0.6cqw 0; }
+.news-masthead { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-weight:700; font-size:4.92cqw; white-space:nowrap; line-height:1.13; text-align:center; letter-spacing:-.025em; padding:0.48cqw 0 0.84cqw; border-top:0.12cqw solid #333; }
+.news-subtitle { text-align:center; font-size:1.416cqw; padding:0.48cqw 0 0.84cqw; border-bottom:0.48cqw double #222; }
+.news-business { display:grid!important; grid-template-columns:1fr 1fr; gap:1.2cqw; text-align:center; font-size:0.984cqw; line-height:1.2; padding:0.78cqw 0; border-bottom:0.12cqw solid #444; }
+.news-business>span+span { border-left:0.12cqw solid #777; }
+.news-body { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); flex:1; gap:1.44cqw; padding-top:1.2cqw; font-size:1.08cqw; line-height:1.18; text-align:justify; }
+.news-body>span+span { border-left:0.12cqw solid #aaa; padding-left:1.2cqw; }
+.news-body strong { display:block; font-size:1.584cqw; font-weight:400; line-height:1.1; text-align:center; margin:1.08cqw 0 0.66cqw; }
 .news-body strong:first-child { margin-top:0; }
-.news-article::first-letter { float:left; font-size:3cqw; line-height:.85; margin:.25cqw .35cqw 0 0; }
-.news-ad-heading { text-align:center; font-size:1.6cqw; border-top:.3cqw double #333; margin-top:1cqw; padding:.65cqw 0; }
-.news-adverts { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:1fr 1fr; gap:.7cqw; min-height:19cqw; }
-.advert { border:.1cqw solid #444; padding:.65cqw .45cqw; text-align:center; font-size:.83cqw; line-height:1.18; display:flex!important; flex-direction:column; justify-content:center; }
-.advert b { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-size:1.75cqw; font-weight:700; line-height:1.03; margin-bottom:.5cqw; }
-.advert.double { border:.4cqw double #333; }
-.advert.ornate { outline:.08cqw solid #555; outline-offset:-.55cqw; }
-.news-colophon { text-align:center; font-size:.66cqw; margin-top:.65cqw; padding-top:.4cqw; border-top:.1cqw solid #777; }
+.news-article::first-letter { float:left; font-size:3.6cqw; line-height:.85; margin:0.3cqw 0.42cqw 0 0; }
+.news-ad-heading { text-align:center; font-size:1.92cqw; border-top:0.36cqw double #333; margin-top:1.2cqw; padding:0.78cqw 0; }
+.news-adverts { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:1fr 1fr; gap:0.84cqw; min-height:22.8cqw; }
+.advert { border:0.12cqw solid #444; padding:0.78cqw 0.54cqw; text-align:center; font-size:0.996cqw; line-height:1.18; display:flex!important; flex-direction:column; justify-content:center; }
+.advert b { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-size:2.1cqw; font-weight:700; line-height:1.03; margin-bottom:0.6cqw; }
+.advert.double { border:0.48cqw double #333; }
+.advert.ornate { outline:0.096cqw solid #555; outline-offset:-0.66cqw; }
+.news-colophon { text-align:center; font-size:0.792cqw; margin-top:0.78cqw; padding-top:0.48cqw; border-top:0.12cqw solid #777; }
 .letter-sheet { min-height:55cqw; padding:3cqw 3.2cqw; font-size:1.45cqw; line-height:1.55; box-shadow:inset 0 0 3cqw #00000008; }
 .letter-sheet>span { display:block; margin-bottom:1.6cqw; }
 .letter-sheet .letter-date { text-align:right; font-size:1.3cqw; }
@@ -88,7 +88,7 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 
 /* 양쪽 푸터와 읽기 영역의 포커스 테두리 보정 */
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
-.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 34px 0; color:#999; font-size:calc(9px + 4pt); line-height:12px; letter-spacing:.04em; flex-shrink:0; }
+.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 34px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.04em; flex-shrink:0; }
 .object:hover { transform:rotate(var(--angle)); filter:drop-shadow(0 3px 2px #00000016); }
 
 /* 신문 외 영문은 Roboto Slab, 한글은 Gowun Dodum. */

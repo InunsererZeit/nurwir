@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400;500;600&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=emoji-watch-2">
+  <link rel="stylesheet" href="style.css?v=large-newspaper-1">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -63,11 +63,11 @@
     const articleText = 'Seine Königliche Hoheit der Erbgroßherzog stattete gestern dem Carolinenstift einen Besuch ab. Unter Führung des leitenden Arztes besichtigte der hohe Gast die Krankensäle, die Küche und die Einrichtungen zur Pflege der Genesenden. Er erkundigte sich nach der Versorgung der Kranken und ließ sich die tägliche Arbeit der Schwestern erläutern. Beim Abschiede sprach Seine Königliche Hoheit dem ärztlichen Personal und den Pflegerinnen seinen Dank für ihren aufopfernden Dienst aus.';
     const objects = [
       {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-v2.png',x:6,y:5,width:50,angle:-15,layer:3,category:'01 / A LETTER',title:'나를 소개합니다.',text:'봉투를 열면 펼쳐지는 나의 이야기.\n\n이곳에 원하는 소개글을 써주세요.'},
-      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
+      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:27.4,y:18.38357771260997,width:67.2,angle:0,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
-      {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,offsetX:30,offsetY:30},
+      {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,offsetX:-5,offsetY:30},
       {id:'letter-sheet',label:'신문 아래의 편지글',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
       {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
       {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:19.78,y:70.952,width:29.44,angle:-18,layer:9,offsetX:20,offsetY:-20},
@@ -108,8 +108,8 @@
     function positionWatchBubble(){
       if(watchBubble.hidden||!watchButton)return;
       const board=collage.getBoundingClientRect(),anchor=watchButton.getBoundingClientRect();
-      const left=Math.max(8-board.left,anchor.left-board.left-watchBubble.offsetWidth-10);
-      const top=Math.max(8,anchor.top-board.top+anchor.height/2-watchBubble.offsetHeight/2);
+      const left=Math.max(8-board.left,anchor.left-board.left-watchBubble.offsetWidth-10)+10;
+      const top=Math.max(8,anchor.top-board.top+anchor.height/2-watchBubble.offsetHeight/2)+15;
       watchBubble.style.left=left+'px';watchBubble.style.top=top+'px';watchBubble.style.bottom='auto';
     }
     window.addEventListener('resize',positionWatchBubble);
@@ -154,7 +154,7 @@
       const candle=collage.querySelector('[data-object="candle"]');
       candle.style.setProperty('--offset-x','30px');
       const excess=Math.max(0,candle.getBoundingClientRect().right-window.innerWidth+8);
-      candle.style.setProperty('--offset-x',Math.max(0,30-excess)+'px');
+      candle.style.setProperty('--offset-x',(Math.max(0,30-excess)-35)+'px');
     }
     window.addEventListener('resize',fitCandle);
     window.addEventListener('load',fitCandle);
