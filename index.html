@@ -8,26 +8,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=collage-1">
+  <link rel="stylesheet" href="style.css?v=collage-intro-1">
 </head>
 <body>
+  <div class="intro-screen" id="intro-screen">
+    <h1 class="intro-logo" aria-label="In unserer Zeit"><span aria-hidden="true">In</span><span aria-hidden="true">unserer</span><span aria-hidden="true">Zeit</span></h1>
+  </div>
   <div class="page">
-    <header>
-      <p class="eyebrow">A SMALL COLLECTION OF STORIES</p>
-      <h1>In unserer Zeit</h1>
-      <p class="subtitle">사물에 담아둔 작은 이야기들.</p>
-    </header>
     <main aria-label="이야기가 담긴 네 개의 사물">
       <div class="collage" id="collage"></div>
-      <p class="hint">종이나 오브제를 눌러 이야기를 열어보세요.</p>
+      <p class="hint">오브제를 눌러 확인하세요.</p>
     </main>
-    <footer><span>Four things, a little world.</span><span>01 — 04</span></footer>
   </div>
   <dialog id="reading-window" aria-labelledby="window-title" aria-describedby="window-copy">
     <div class="window-bar"><span id="window-category">a little story</span><button class="close" id="close-window" type="button" aria-label="글 창 닫기">×</button></div>
     <div class="window-body"><h2 id="window-title" tabindex="-1"></h2><p class="copy" id="window-copy"></p><p class="sample">예시 글 · 나만의 이야기로 바꿔주세요.</p></div>
   </dialog>
   <script>
+    // 인트로는 페이지를 열 때마다 약 2초 보여준 뒤 사라집니다.
+    const introScreen = document.getElementById('intro-screen');
+    const mainPage = document.querySelector('.page');
+    mainPage.inert = true;
+    setTimeout(() => {
+      document.body.classList.add('intro-leaving');
+      setTimeout(() => {
+        introScreen.hidden = true;
+        mainPage.inert = false;
+      }, 360);
+    }, 2000);
     // 교체 안내: image는 이미지 파일 경로입니다. 투명 PNG/SVG를 권장합니다.
     // x, y, width는 캔버스 기준 %, angle은 기울기(도), layer는 겹치는 순서입니다.
     // title과 text를 바꾸면 창 안의 글이 바뀝니다. text 안의 \n은 줄바꿈입니다.
