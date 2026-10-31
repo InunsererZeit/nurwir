@@ -86,4 +86,9 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 .copy strong { font-weight:700; }
 
-.copy .english-names { font-size:11px; opacity:.7; }
+.copy .english-names { font-size:11px; }
+.copy .english-names,.copy .glove-note-text { opacity:.7; }
+
+.copy .glove-note { display:inline-flex; align-items:flex-start; gap:6px; width:100%; vertical-align:top; white-space:normal; }
+.solar-forward-icon { width:16px; height:16px; flex:0 0 16px; margin-top:5px; color:inherit; }
+.glove-note-text { min-width:0; }
