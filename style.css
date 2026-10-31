@@ -46,7 +46,7 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 
 .object.is-nudging { animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
 .object.is-nudging::after { animation:object-tint .65s ease; }
-@keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 2deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - 1deg)); } }
+@keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(var(--angle)); } 70% { transform:translateY(1px) rotate(var(--angle)); } }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
 .printed-object { text-align:left; }
 .printed-object::after { mask:none; -webkit-mask:none; }
@@ -88,5 +88,5 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 
 /* 양쪽 푸터와 읽기 영역의 포커스 테두리 보정 */
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
-.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 19px 0; color:#999; font-size:9px; letter-spacing:.04em; flex-shrink:0; }
+.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 34px 0; color:#999; font-size:9px; letter-spacing:.04em; flex-shrink:0; }
 .object:hover { transform:rotate(var(--angle)); filter:drop-shadow(0 3px 2px #00000016); }

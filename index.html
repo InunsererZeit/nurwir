@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=three-windows-1">
+  <link rel="stylesheet" href="style.css?v=gentle-motion-1">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -64,7 +64,7 @@
     const objects = [
       {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-v2.png',x:6,y:5,width:50,angle:-15,layer:3,category:'01 / A LETTER',title:'나를 소개합니다.',text:'봉투를 열면 펼쳐지는 나의 이야기.\n\n이곳에 원하는 소개글을 써주세요.'},
       {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
-      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:59.34375,y:54.1640625,width:32.8125,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
+      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:56.0625,y:49.734375,width:39.375,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
       {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8},
@@ -148,9 +148,9 @@
     }
     decorations.forEach(item=>placeItem(item,false));
     objects.forEach(item=>placeItem(item,true));
-    // 오브제의 정지 상태 하단과 푸터 사이를 항상 20px로 맞춥니다.
+    // 오브제의 정지 상태 하단과 푸터 사이를 항상 45px로 맞춥니다.
     const footerInkEdges=new WeakMap();
-    function visibleBottom(element){
+    function visibleBottom(element,visualScale=1){
       const img=element.querySelector("img");
       if(!img||element.classList.contains("photo-postcard")||!img.complete||!img.naturalWidth)return element.getBoundingClientRect().bottom;
       try{
@@ -169,14 +169,14 @@
         }
         const style=getComputedStyle(element),m=new DOMMatrix(style.transform),origin=style.transformOrigin.split(" ").map(parseFloat);
         const top=collage.getBoundingClientRect().top+element.offsetTop+origin[1];
-        return top+Math.max(...edges.map(([x,y])=>m.b*(x*element.offsetWidth-origin[0])+m.d*(y*element.offsetHeight-origin[1])+m.f));
+        return top+Math.max(...edges.map(([x,y])=>visualScale*(m.b*(x*element.offsetWidth-origin[0])+m.d*(y*element.offsetHeight-origin[1]))+m.f));
       }catch{return element.getBoundingClientRect().bottom;}
     }
     function positionFooter(){
       const footer=document.querySelector('.site-footer');
       footer.style.translate='none';
-      const bottom=Math.max(...[...collage.querySelectorAll('.object')].map(visibleBottom));
-      footer.style.translate='0 '+(bottom+20-footer.firstElementChild.getBoundingClientRect().top)+'px';
+      const bottom=Math.max(...[...collage.querySelectorAll('.object')].map(e=>visibleBottom(e,e.dataset.object==='gloves'?1/1.2:1)));
+      footer.style.translate='0 '+(bottom+45-footer.firstElementChild.getBoundingClientRect().top)+'px';
     }
     window.addEventListener('resize',positionFooter);
     window.addEventListener('load',positionFooter);
