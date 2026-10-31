@@ -59,15 +59,15 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .news-subtitle { text-align:center; font-size:1.18cqw; padding:.4cqw 0 .7cqw; border-bottom:.4cqw double #222; }
 .news-business { display:grid!important; grid-template-columns:1fr 1fr; gap:1cqw; text-align:center; font-size:.82cqw; line-height:1.2; padding:.65cqw 0; border-bottom:.1cqw solid #444; }
 .news-business>span+span { border-left:.1cqw solid #777; }
-.news-body { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); flex:1; gap:1.2cqw; padding-top:1cqw; font-size:1cqw; line-height:1.22; text-align:justify; }
+.news-body { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); flex:1; gap:1.2cqw; padding-top:1cqw; font-size:.9cqw; line-height:1.18; text-align:justify; }
 .news-body>span+span { border-left:.1cqw solid #aaa; padding-left:1cqw; }
-.news-body strong { display:block; font-size:1.42cqw; font-weight:400; line-height:1.1; text-align:center; margin:.9cqw 0 .55cqw; }
+.news-body strong { display:block; font-size:1.32cqw; font-weight:400; line-height:1.1; text-align:center; margin:.9cqw 0 .55cqw; }
 .news-body strong:first-child { margin-top:0; }
 .news-article::first-letter { float:left; font-size:3cqw; line-height:.85; margin:.25cqw .35cqw 0 0; }
 .news-ad-heading { text-align:center; font-size:1.6cqw; border-top:.3cqw double #333; margin-top:1cqw; padding:.65cqw 0; }
-.news-adverts { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:1fr 1fr; gap:.7cqw; min-height:20cqw; }
-.advert { border:.1cqw solid #444; padding:.65cqw .45cqw; text-align:center; font-size:.87cqw; line-height:1.18; display:flex!important; flex-direction:column; justify-content:center; }
-.advert b { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-size:1.85cqw; font-weight:700; line-height:1.03; margin-bottom:.5cqw; }
+.news-adverts { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:1fr 1fr; gap:.7cqw; min-height:19cqw; }
+.advert { border:.1cqw solid #444; padding:.65cqw .45cqw; text-align:center; font-size:.83cqw; line-height:1.18; display:flex!important; flex-direction:column; justify-content:center; }
+.advert b { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-size:1.75cqw; font-weight:700; line-height:1.03; margin-bottom:.5cqw; }
 .advert.double { border:.4cqw double #333; }
 .advert.ornate { outline:.08cqw solid #555; outline-offset:-.55cqw; }
 .news-colophon { text-align:center; font-size:.66cqw; margin-top:.65cqw; padding-top:.4cqw; border-top:.1cqw solid #777; }
