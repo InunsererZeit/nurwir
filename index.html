@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=grain-1">
+  <link rel="stylesheet" href="style.css?v=compact-watch-1">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -17,7 +17,7 @@
   </div>
   <div class="page">
     <main aria-label="이야기가 담긴 네 개의 사물">
-      <div class="collage" id="collage"><div class="watch-bubble" id="watch-bubble" role="status" hidden><span lang="de">Psst… die Zeit macht gerade Pause.</span><span>시간도 잠깐 쉬어가는 중이에요.</span></div></div>
+      <div class="collage" id="collage"><div class="watch-bubble" id="watch-bubble" role="status" hidden><span>시간도 잠깐 쉬어가는 중.</span></div></div>
     </main>
     <footer class="site-footer"><span>In unserer Zeit</span><span>© 2026</span></footer>
   </div>
@@ -65,12 +65,12 @@
       {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-v2.png',x:6,y:5,width:50,angle:-15,layer:3,category:'01 / A LETTER',title:'나를 소개합니다.',text:'봉투를 열면 펼쳐지는 나의 이야기.\n\n이곳에 원하는 소개글을 써주세요.'},
       {id:'candle',label:'촛대와 초 — 작은 생각',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,category:'02 / CANDLELIGHT',title:'촛불 곁의 생각.',text:'고요한 빛 아래에 남겨두고 싶은 문장들.\n\n이곳에 두 번째 글을 써주세요.'},
       {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
-      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:66.375,y:63.65625,width:18.75,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
+      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:59.34375,y:54.1640625,width:32.8125,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
       {id:'letter-sheet',label:'신문 아래의 편지글',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
       {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
-      {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:16.1,y:67.64,width:36.8,angle:-18,layer:9,offsetX:20,offsetY:-20},
+      {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:19.78,y:70.952,width:29.44,angle:-18,layer:9,offsetX:20,offsetY:-20},
       {id:'key',label:'오래된 열쇠',image:'engraved-key.png',x:11,y:30,width:22,angle:35,layer:9},
     ];
     const collage = document.getElementById('collage');
@@ -150,6 +150,17 @@
     }
     decorations.forEach(item=>placeItem(item,false));
     objects.forEach(item=>placeItem(item,true));
+    // 오브제의 정지 상태 하단과 푸터 사이를 항상 20px로 맞춥니다.
+    function positionFooter(){
+      const footer=document.querySelector('.site-footer');
+      footer.style.translate='none';
+      const bottom=Math.max(...[...collage.querySelectorAll('.object')].map(e=>e.getBoundingClientRect().bottom));
+      footer.style.translate='0 '+(bottom+20-footer.firstElementChild.getBoundingClientRect().top)+'px';
+    }
+    window.addEventListener('resize',positionFooter);
+    window.addEventListener('load',positionFooter);
+    document.fonts.ready.then(positionFooter);
+    positionFooter();
     // 투명 이미지의 빈 부분은 아래에 있는 사물을 선택하도록 통과시킵니다.
     const alphaCanvases=new WeakMap();
     function hitsInk(element,event){
