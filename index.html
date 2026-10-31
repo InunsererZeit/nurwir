@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=cleanup-1">
+  <link rel="stylesheet" href="style.css?v=glass-dialog-1">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -22,7 +22,7 @@
     <footer class="site-footer"><span>In unserer Zeit</span><span>© 2025</span></footer>
   </div>
   <dialog id="reading-window" aria-label="이야기" aria-describedby="window-copy">
-    <div class="window-bar"><span id="window-category">a little story</span><button class="close" id="close-window" type="button" aria-label="글 창 닫기">×</button></div>
+    <button class="close" id="close-window" type="button" aria-label="글 창 닫기">×</button>
     <div class="window-body"><p class="copy" id="window-copy"></p></div>
   </dialog>
   <template id="newspaper-template"><span class="newspaper" lang="de">
@@ -62,9 +62,9 @@
     // 오브제 좌표(%)와 크기, 기울기, 겹침 순서. images는 같은 폴더에 둡니다.
     const articleText = document.getElementById('newspaper-template').content.querySelector('.news-article').textContent;
     const objects = [
-      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-v2.png',x:6,y:5,width:50,angle:-15,layer:3,category:'PROFIL',text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
-      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,category:'HINWEIS',text:"텍스트 위주\n비정기적 업로드\n\n본 계정은 CP드림을 다룹니다\n원작 해석이나 커플링 성향에 민감하신 분은 열람에 유의해주세요\n본 계정은 비윤리적 소재가 포함되어 있습니다\n이미지 쿠션으로 민감한 미디어 필터 기능만 사용합니다"},
-      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:10,category:'ANMERKUNG',text:'기본 배려 반사, 편의상 1T1D 유지\n알고있는 장르 위주로 뵙고있어요\n\n드친소를 제외한 타임라인 외부 컨택은 받지 않습니다'}
+      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-v2.png',x:6,y:5,width:50,angle:-15,layer:3,text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
+      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
+      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:10,text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
       {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,offsetX:-2,offsetY:33},
@@ -88,7 +88,6 @@
       button.classList.add('is-selected');
       nudge(button);
       button.setAttribute('aria-expanded','true');
-      document.getElementById('window-category').textContent = object.category;
       document.getElementById('window-copy').textContent = object.text;
       if (!readingWindow.open) readingWindow.showModal();
       document.querySelector('.window-body').scrollTop = 0;

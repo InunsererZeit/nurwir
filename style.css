@@ -12,16 +12,14 @@ main { width:100%; margin:auto 0; padding:0; }
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
 .object.is-selected::after { opacity:.78; }
 .object:focus-visible { outline:1px dashed #777; outline-offset:7px; }
-dialog { position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 36px); max-width:262.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #dedede; border-radius:2px; color:var(--ink); background:#fff; box-shadow:0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
+dialog { position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 36px); max-width:262.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #ffffffcc; border-radius:10px; color:var(--ink); background:rgba(255,255,255,.88); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
 dialog::backdrop { background:transparent; }
 dialog[open] { display:flex; flex-direction:column; animation:open-note .25s ease-out; }
-.window-bar { display:flex; justify-content:space-between; align-items:center; flex-shrink:0; border-bottom:1px solid #ececec; padding:10px 12px 10px 24px; }
-.window-bar span { color:#999; font-size:9px; letter-spacing:.12em; }
-.close { display:grid; place-items:center; width:40px; height:40px; border:0; background:transparent; font-family:"Roboto Slab",serif; font-weight:300; font-size:22px; color:#888; }
+.close { position:absolute; top:8px; right:8px; z-index:1; display:grid; place-items:center; width:32px; height:32px; border-radius:6px; border:0; background:transparent; font-family:"Roboto Slab",serif; font-weight:300; font-size:22px; color:#888; }
 .close:hover { background:#f5f5f5; color:#222; }
 .close:focus-visible { outline:1px solid #555; }
-.window-body { min-height:0; padding:28px 24px; overflow:auto; overscroll-behavior:contain; }
-.copy { margin:0; font-size:13px; line-height:2; color:#737373; white-space:pre-wrap; overflow-wrap:anywhere; word-break:keep-all; }
+.window-body { min-height:0; padding:44px 24px 24px; overflow:auto; overscroll-behavior:contain; }
+.copy { margin:0; font-size:13px; line-height:2; color:#5e5e5e; white-space:pre-wrap; overflow-wrap:anywhere; word-break:keep-all; }
 @keyframes open-note { from { opacity:0; transform:translate(-50%,calc(-50% + 6px)); } to { opacity:1; transform:translate(-50%,-50%); } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
 
