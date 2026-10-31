@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400;500;600&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=restore-paper-1">
+  <link rel="stylesheet" href="style.css?v=footer-inset-1">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -67,7 +67,7 @@
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
-      {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,offsetX:5,offsetY:33},
+      {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,offsetX:13,offsetY:33},
       {id:'letter-sheet',label:'신문 아래의 편지글',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
       {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
       {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:19.78,y:70.952,width:29.44,angle:-18,layer:9,offsetX:20,offsetY:-20},
@@ -176,7 +176,7 @@
       const footer=document.querySelector('.site-footer');
       footer.style.translate='none';
       const bottom=Math.max(...[...collage.querySelectorAll('.object')].map(e=>visibleBottom(e,e.dataset.object==='gloves'?1/1.125:1)));
-      footer.style.translate='0 '+(bottom+53-footer.firstElementChild.getBoundingClientRect().top)+'px';
+      footer.style.translate='0 '+(bottom+49-footer.firstElementChild.getBoundingClientRect().top)+'px';
     }
     window.addEventListener('resize',positionFooter);
     window.addEventListener('load',positionFooter);
