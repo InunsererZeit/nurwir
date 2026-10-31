@@ -88,6 +88,5 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 
 /* 양쪽 푸터와 읽기 영역의 포커스 테두리 보정 */
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
-.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 4px 0; color:#999; font-size:9px; letter-spacing:.04em; flex-shrink:0; }
-#window-title:focus { outline:none; }
+.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 19px 0; color:#999; font-size:9px; letter-spacing:.04em; flex-shrink:0; }
 .object:hover { transform:rotate(var(--angle)); filter:drop-shadow(0 3px 2px #00000016); }
