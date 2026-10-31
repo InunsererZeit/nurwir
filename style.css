@@ -1,4 +1,4 @@
-:root { color-scheme: light; --ink:#222; --muted:#929292; --accent:#ffae68; }
+:root { color-scheme: light; --ink:#222; --accent:#ffae68; }
 * { box-sizing:border-box; }
 body { margin:0; background:#fff; color:var(--ink); font-family:"Roboto Slab","Gowun Dodum",serif; -webkit-font-smoothing:antialiased; }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
@@ -6,12 +6,10 @@ button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-colo
 main { width:100%; margin:auto 0; padding:0; }
 /* 모든 기기에서 같은 비율과 배치. 좌표는 index.html의 objects에서 수정합니다. */
 .collage { position:relative; width:min(100%,540px,calc(78svh - 10px)); aspect-ratio:900 / 1100; container-type:inline-size; margin:0 auto; isolation:isolate; }
-.object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 5px 4px #00000019); }
+.object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 3px 2px #00000016); }
 .object img { display:block; width:100%; height:auto; filter:grayscale(1); user-select:none; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
-.object:hover { transform:translateY(-3px) rotate(var(--angle)); filter:drop-shadow(0 8px 6px #00000022); }
-.object.is-selected { transform:rotate(var(--angle)); }
 .object.is-selected::after { opacity:.78; }
 .object:focus-visible { outline:1px dashed #777; outline-offset:7px; }
 dialog { position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 36px); max-width:262.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #dedede; border-radius:2px; color:var(--ink); background:#fff; box-shadow:0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
@@ -23,10 +21,9 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .close:hover { background:#f5f5f5; color:#222; }
 .close:focus-visible { outline:1px solid #555; }
 .window-body { min-height:0; padding:28px 24px; overflow:auto; overscroll-behavior:contain; }
-h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .copy { margin:0; font-size:13px; line-height:2; color:#737373; white-space:pre-wrap; overflow-wrap:anywhere; word-break:keep-all; }
 @keyframes open-note { from { opacity:0; transform:translate(-50%,calc(-50% + 6px)); } to { opacity:1; transform:translate(-50%,-50%); } }
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } .object.is-selected { transform:rotate(var(--angle)); } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
 
 /* 흰 단색 배경의 3줄 로고: 등장 → 0.5초 후 블러와 함께 퇴장 */
 .intro-screen { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; background:#fff; opacity:1; transition:opacity .28s ease .14s,visibility 0s .42s; }
@@ -40,9 +37,7 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 @keyframes logo-arrive { from { opacity:0; transform:translateY(16px); filter:blur(3px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
 @media(prefers-reduced-motion:reduce) { .intro-logo,.intro-leaving .intro-logo { transform:none; filter:none; } }
 
-
 /* 모든 사물은 클릭 가능. 팝업이 없는 사물도 살짝 움직입니다. */
-.object { filter:drop-shadow(0 3px 2px #00000016); }
 
 .object.is-nudging { animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
 .object.is-nudging::after { animation:object-tint .65s ease; }
@@ -50,8 +45,8 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
 .printed-object { text-align:left; }
 .printed-object::after { mask:none; -webkit-mask:none; }
-.newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; font-family:"UnifrakturMaguntia",serif; border:.1cqw solid #999; overflow:hidden; }
-.newspaper { display:flex; flex-direction:column; aspect-ratio:620 / 760; padding:2.8%; box-shadow:inset 0 0 2cqw #00000009; }
+.newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; border:.1cqw solid #999; overflow:hidden; }
+.newspaper { font-family:"UnifrakturMaguntia",serif; display:flex; flex-direction:column; aspect-ratio:620 / 760; padding:2.8%; box-shadow:inset 0 0 2cqw #00000009; }
 .newspaper span { display:block; }
 .news-datebar { display:flex!important; justify-content:space-between; font-size:.8cqw; border-top:.15cqw solid #222; padding:.5cqw 0; }
 .news-masthead { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-weight:700; font-size:4.1cqw; white-space:nowrap; line-height:1.13; text-align:center; letter-spacing:-.025em; padding:.4cqw 0 .7cqw; border-top:.1cqw solid #333; }
@@ -70,28 +65,23 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .advert.double { border:.4cqw double #333; }
 .advert.ornate { outline:.08cqw solid #555; outline-offset:-.55cqw; }
 .news-colophon { text-align:center; font-size:.66cqw; margin-top:.65cqw; padding-top:.4cqw; border-top:.1cqw solid #777; }
-.letter-sheet { min-height:55cqw; padding:3cqw 3.2cqw; font-size:1.45cqw; line-height:1.55; box-shadow:inset 0 0 3cqw #00000008; }
+.letter-sheet { min-height:55cqw; padding:3cqw 3.2cqw; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:1.2cqw; line-height:1.5; box-shadow:inset 0 0 3cqw #00000008; }
 .letter-sheet>span { display:block; margin-bottom:1.6cqw; }
 .letter-sheet .letter-date { text-align:right; font-size:1.3cqw; }
 .letter-sheet .letter-salutation { font-size:2cqw; }
 .letter-sheet .letter-signature { text-align:right; font-size:1.8cqw; }
-.watch-bubble { position:absolute; left:7%; bottom:24%; z-index:35; width:max-content; max-width:calc(100% - 16px); background:#fff; color:#555; border:1px solid #aaa; border-radius:8px; padding:7px 8px; box-shadow:0 5px 22px #00000012; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
+.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:#fff; color:#555; border:1px solid #aaa; border-radius:8px; padding:7px 8px; box-shadow:0 5px 22px #00000012; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
 .watch-bubble[hidden] { display:none; }
 .watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:#fff; border-right:1px solid #aaa; border-top:1px solid #aaa; transform:translateY(-50%) rotate(45deg); }
 .watch-bubble span { display:block; }
-.watch-bubble span[lang] { font-family:"Roboto Slab",serif; font-size:13px; color:#222; margin-bottom:5px; }
 @keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
 
 /* 보정한 원본 사진은 왜곡 없이 얇은 엽서 테두리 안에 배치합니다. */
 .photo-postcard { padding:1cqw; background:#fcfcfc; border:.12cqw solid #aaa; }
 .photo-postcard::after { mask:none; -webkit-mask:none; }
 
-/* 양쪽 푸터와 읽기 영역의 포커스 테두리 보정 */
+/* 필터 정의와 양쪽 푸터 */
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
 .site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.04em; flex-shrink:0; }
-.object:hover { transform:rotate(var(--angle)); filter:drop-shadow(0 3px 2px #00000016); }
-
-/* 신문 외 영문은 Roboto Slab, 한글은 Gowun Dodum. */
-.letter-sheet { font-family:"Roboto Slab","Gowun Dodum",serif; font-size:1.2cqw; line-height:1.5; }
 
 .watch-bubble [role="img"] { filter:grayscale(1); }
