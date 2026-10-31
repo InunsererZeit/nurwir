@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=collage-intro-1">
+  <link rel="stylesheet" href="style.css?v=collage-intro-2">
 </head>
 <body>
   <div class="intro-screen" id="intro-screen">
@@ -25,7 +25,7 @@
     <div class="window-body"><h2 id="window-title" tabindex="-1"></h2><p class="copy" id="window-copy"></p><p class="sample">예시 글 · 나만의 이야기로 바꿔주세요.</p></div>
   </dialog>
   <script>
-    // 인트로는 페이지를 열 때마다 약 2초 보여준 뒤 사라집니다.
+    // 인트로는 페이지를 열 때마다 약 1.25초 보여준 뒤 사라집니다.
     const introScreen = document.getElementById('intro-screen');
     const mainPage = document.querySelector('.page');
     mainPage.inert = true;
@@ -34,8 +34,8 @@
       setTimeout(() => {
         introScreen.hidden = true;
         mainPage.inert = false;
-      }, 360);
-    }, 2000);
+      }, 460);
+    }, 1250);
     // 교체 안내: image는 이미지 파일 경로입니다. 투명 PNG/SVG를 권장합니다.
     // x, y, width는 캔버스 기준 %, angle은 기울기(도), layer는 겹치는 순서입니다.
     // title과 text를 바꾸면 창 안의 글이 바뀝니다. text 안의 \n은 줄바꿈입니다.
