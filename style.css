@@ -6,7 +6,7 @@ button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-colo
 main { width:100%; margin:auto 0; padding:0; }
 /* 모든 기기에서 같은 비율과 배치. 좌표는 index.html의 objects에서 수정합니다. */
 .collage { position:relative; width:min(100%,540px,calc(78svh - 10px)); aspect-ratio:900 / 1100; container-type:inline-size; margin:0 auto; isolation:isolate; }
-.object { position:absolute; left:var(--x); top:var(--y); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 5px 4px #00000019); }
+.object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 5px 4px #00000019); }
 .object img { display:block; width:100%; height:auto; filter:grayscale(1); user-select:none; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
@@ -82,3 +82,7 @@ h2 { margin:0 0 22px; font-size:23px; font-weight:400; letter-spacing:-.04em; }
 .watch-bubble span { display:block; }
 .watch-bubble span[lang] { font-family:"Playfair Display",serif; font-size:13px; color:#222; margin-bottom:5px; }
 @keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
+
+/* 보정한 원본 사진은 왜곡 없이 얇은 엽서 테두리 안에 배치합니다. */
+.photo-postcard { padding:1cqw; background:#fcfcfc; border:.12cqw solid #aaa; }
+.photo-postcard::after { mask:none; -webkit-mask:none; }

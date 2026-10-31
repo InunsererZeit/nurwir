@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400;500;600&amp;family=UnifrakturCook:wght@700&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=engraving-3">
+  <link rel="stylesheet" href="style.css?v=palace-1">
 </head>
 <body>
   <div class="intro-screen" id="intro-screen">
@@ -63,13 +63,13 @@
       {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope.png',x:6,y:5,width:50,angle:-15,layer:3,category:'01 / A LETTER',title:'나를 소개합니다.',text:'봉투를 열면 펼쳐지는 나의 이야기.\n\n이곳에 원하는 소개글을 써주세요.'},
       {id:'candle',label:'촛대와 초 — 작은 생각',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:8,category:'02 / CANDLELIGHT',title:'촛불 곁의 생각.',text:'고요한 빛 아래에 남겨두고 싶은 문장들.\n\n이곳에 두 번째 글을 써주세요.'},
       {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',kind:'newspaper',x:33,y:24,width:56,angle:0,layer:5,category:'03 / NEUSTRELITZER ZEITUNG',title:'Der Erbgroßherzog im Carolinenstift.',text:articleText+'\n\n설정에 맞추어 작성한 창작 기사입니다. 이곳의 글은 원하는 내용으로 바꿀 수 있어요.'},
-      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:72,y:67,width:25,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
+      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57,y:51,width:37.5,angle:-21,layer:10,category:'04 / A SECRET DRAWER',title:'작은 비밀 서랍.',text:'아직 이름을 붙이지 못한 생각과 작은 조각들.\n\n이곳에 네 번째 이야기를 담아주세요.'}
     ];
     const decorations = [
       {id:'letter-sheet',label:'신문 아래의 편지글',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
-      {id:'postcard',label:'셰퍼드 엽서',image:'engraved-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
-      {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:23,y:76,width:23,angle:-8,layer:9},
-      {id:'key',label:'오래된 열쇠',image:'engraved-key.png',x:40,y:1,width:22,angle:68,layer:9},
+      {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard.png',x:3,y:52,width:42,angle:-9,layer:7},
+      {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:11.5,y:63.5,width:46,angle:-18,layer:9,offsetX:20,offsetY:-20},
+      {id:'key',label:'오래된 열쇠',image:'engraved-key.png',x:11,y:30,width:22,angle:55,layer:9},
     ];
     const collage = document.getElementById('collage');
     const readingWindow = document.getElementById('reading-window');
@@ -104,6 +104,14 @@
       element.classList.add('is-nudging');
       nudgeTimers.set(element,setTimeout(()=>element.classList.remove('is-nudging'),700));
     }
+    function positionWatchBubble(){
+      if(watchBubble.hidden||!watchButton)return;
+      const board=collage.getBoundingClientRect(),anchor=watchButton.getBoundingClientRect();
+      const left=Math.max(8,Math.min(board.width-watchBubble.offsetWidth-8,anchor.left-board.left+anchor.width/2-watchBubble.offsetWidth/2));
+      const top=Math.max(8,anchor.top-board.top-watchBubble.offsetHeight-10);
+      watchBubble.style.left=left+'px';watchBubble.style.top=top+'px';watchBubble.style.bottom='auto';
+    }
+    window.addEventListener('resize',positionWatchBubble);
     function activate(item,element){
       if(item.popup){selectObject(item,element);return;}
       nudge(element);
@@ -111,6 +119,7 @@
         const show=watchBubble.hidden;
         hideWatchBubble();
         watchBubble.hidden=!show;
+        if(show)positionWatchBubble();
         element.setAttribute('aria-expanded',String(show));
       }else{hideWatchBubble();}
     }
@@ -121,10 +130,11 @@
       element.type='button';
       element.className=popup?'object':'object prop';
       element.dataset.object=item.id;
+      if(item.id==='postcard')element.classList.add('photo-postcard');
       element.setAttribute('aria-label',item.label);
       if(popup){element.setAttribute('aria-controls','reading-window');element.setAttribute('aria-expanded','false');}
       if(item.action==='watch'){watchButton=element;element.setAttribute('aria-controls','watch-bubble');element.setAttribute('aria-expanded','false');}
-      for(const [name,value] of Object.entries({x:item.x+'%',y:item.y+'%',width:item.width+'%',angle:item.angle+'deg',layer:item.layer}))element.style.setProperty('--'+name,value);
+      for(const [name,value] of Object.entries({x:item.x+'%',y:item.y+'%',width:item.width+'%',angle:item.angle+'deg',layer:item.layer,'offset-x':(item.offsetX||0)+'px','offset-y':(item.offsetY||0)+'px'}))element.style.setProperty('--'+name,value);
       if(item.kind){
         element.classList.add('printed-object');
         element.append(document.getElementById(item.kind==='newspaper'?'newspaper-template':'letter-template').content.cloneNode(true));
