@@ -9,7 +9,7 @@ body {
   margin: 0;
   background: #fff;
   color: var(--ink);
-  font-family: "Gowun Dodum", sans-serif;
+  font-family: "Playfair Display", "Gowun Dodum", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 button { font: inherit; color: inherit; cursor: pointer; }
