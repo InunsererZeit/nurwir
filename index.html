@@ -151,10 +151,33 @@
     decorations.forEach(item=>placeItem(item,false));
     objects.forEach(item=>placeItem(item,true));
     // 오브제의 정지 상태 하단과 푸터 사이를 항상 20px로 맞춥니다.
+    const footerInkEdges=new WeakMap();
+    function visibleBottom(element){
+      const img=element.querySelector("img");
+      if(!img||element.classList.contains("photo-postcard")||!img.complete||!img.naturalWidth)return element.getBoundingClientRect().bottom;
+      try{
+        let edges=footerInkEdges.get(img);
+        if(!edges){
+          const cv=document.createElement("canvas");cv.width=img.naturalWidth;cv.height=img.naturalHeight;
+          const ctx=cv.getContext("2d",{willReadFrequently:true});ctx.drawImage(img,0,0);
+          const pixels=ctx.getImageData(0,0,cv.width,cv.height).data;edges=[];
+          for(let y=0;y<cv.height;y+=2){
+            let left=0,right=cv.width-1;
+            while(left<cv.width&&pixels[(y*cv.width+left)*4+3]<40)left++;
+            while(right>=left&&pixels[(y*cv.width+right)*4+3]<40)right--;
+            if(left<=right)edges.push([left/cv.width,y/cv.height],[right/cv.width,y/cv.height]);
+          }
+          footerInkEdges.set(img,edges);
+        }
+        const style=getComputedStyle(element),m=new DOMMatrix(style.transform),origin=style.transformOrigin.split(" ").map(parseFloat);
+        const top=collage.getBoundingClientRect().top+element.offsetTop+origin[1];
+        return top+Math.max(...edges.map(([x,y])=>m.b*(x*element.offsetWidth-origin[0])+m.d*(y*element.offsetHeight-origin[1])+m.f));
+      }catch{return element.getBoundingClientRect().bottom;}
+    }
     function positionFooter(){
       const footer=document.querySelector('.site-footer');
       footer.style.translate='none';
-      const bottom=Math.max(...[...collage.querySelectorAll('.object')].map(e=>e.getBoundingClientRect().bottom));
+      const bottom=Math.max(...[...collage.querySelectorAll('.object')].map(visibleBottom));
       footer.style.translate='0 '+(bottom+20-footer.firstElementChild.getBoundingClientRect().top)+'px';
     }
     window.addEventListener('resize',positionFooter);
