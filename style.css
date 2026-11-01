@@ -1,4 +1,4 @@
-:root { color-scheme: light; --ink:#222; --accent:#c9c9c9; }
+:root { color-scheme: light; --ink:#222; --accent:#999999; }
 * { box-sizing:border-box; }
 body { margin:0; background:#fff; color:var(--ink); font-family:"Roboto Slab","Gowun Dodum",serif; -webkit-font-smoothing:antialiased; }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
@@ -26,7 +26,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 /* 흰 단색 배경의 3줄 로고: 등장 → 0.5초 후 블러와 함께 퇴장 */
 .intro-screen { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; background:#fff; opacity:1; transition:opacity .28s ease .14s,visibility 0s .42s; }
 .intro-screen[hidden] { display:none; }
-.intro-logo { margin:0; color:#444; font-family:"Playfair Display",serif; font-size:48px; font-weight:400; line-height:.7466667; text-align:center; letter-spacing:-.035em; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; transition:opacity .32s ease,filter .32s ease,transform .32s ease; }
+.intro-logo { margin:0; color:#444; font-family:"Playfair Display",serif; font-size:48px; font-weight:400; line-height:1.12; text-align:center; letter-spacing:-.035em; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; transition:opacity .32s ease,filter .32s ease,transform .32s ease; }
 .intro-logo span { display:block; }
 .intro-leaving .intro-logo { animation:logo-depart .42s ease-in both; }
 .intro-leaving .intro-screen { opacity:0; visibility:hidden; }
