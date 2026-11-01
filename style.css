@@ -6,7 +6,7 @@ button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-colo
 main { width:100%; margin:auto 0; padding:0; }
 /* 모든 기기에서 같은 비율과 배치. 좌표는 index.html의 objects에서 수정합니다. */
 .collage { position:relative; width:min(100%,540px,calc(78svh - 10px)); aspect-ratio:900 / 1100; container-type:inline-size; margin:0 auto; isolation:isolate; }
-.object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 3px 2px #00000016); }
+.object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 3px 2px rgba(0,0,0,.2)); }
 .object img { display:block; width:100%; height:auto; filter:grayscale(1); user-select:none; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
@@ -41,7 +41,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .object.is-nudging::after { animation:object-tint .65s ease; }
 @keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 1deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - .5deg)); } }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.30; } }
-.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.82); color:#555; border:1px solid #ffffffcc; border-radius:8px; padding:7px 8px; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
+.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.82); color:#555; border:1px solid #ffffffcc; border-radius:0; padding:7px 8px; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
 .watch-bubble[hidden] { display:none; }
 .watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:rgba(255,255,255,.82); border-right:1px solid #ffffffcc; border-top:1px solid #ffffffcc; transform:translateY(-50%) rotate(45deg); }
 .watch-bubble span { display:block; }
@@ -65,7 +65,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 /* 별도 PNG 자산: 흑백 종이, 색을 보존하는 리본과 모노톤 낱알 진주. */
 .colored-object img { filter:none; }
-.ribbon-object { cursor:default; height:100%; overflow:hidden; filter:drop-shadow(0 1px 1px #00000012); }
+.ribbon-object { cursor:default; height:100%; overflow:hidden; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); }
 .ribbon-object img { position:absolute; left:0; top:-8.3%; width:100%; height:117%; object-fit:fill; }
 .ribbon-object::after { mask-size:100% 117%; -webkit-mask-size:100% 117%; mask-position:left 0 top -10.144cqw; -webkit-mask-position:left 0 top -10.144cqw; }
 .ribbon-front { clip-path:url(#ribbon-front-clip); }
@@ -76,5 +76,5 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 .number-marker[aria-expanded="true"],.number-marker[aria-expanded="true"]:hover { background:#e9914c; color:#fff; }
 
-/* 앞쪽 레이어는 형태를 따르는 90% 투명 그림자로 깊이만 살짝 더합니다. */
-.object.foreground-object { filter:drop-shadow(0 .7cqw .75cqw rgba(0,0,0,.1)); }
+/* 앞쪽 레이어는 형태를 따르는 80% 투명 그림자로 깊이만 살짝 더합니다. */
+.object.foreground-object { filter:drop-shadow(0 .7cqw .75cqw rgba(0,0,0,.2)); }
