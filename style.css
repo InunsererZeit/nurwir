@@ -1,4 +1,4 @@
-:root { color-scheme: light; --ink:#222; --accent:#8d8d8d; }
+:root { color-scheme: light; --ink:#222; --accent:#ffae68; }
 * { box-sizing:border-box; }
 body { margin:0; background:#fff; color:var(--ink); font-family:"Roboto Slab","Gowun Dodum",serif; -webkit-font-smoothing:antialiased; }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
@@ -10,9 +10,9 @@ main { width:100%; margin:auto 0; padding:0; }
 .object img { display:block; width:100%; height:auto; filter:grayscale(1); user-select:none; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
-.object.is-selected::after { opacity:.78; }
+.object.is-selected::after { opacity:.15; }
 .object:focus-visible { outline:1px dashed #777; outline-offset:7px; }
-dialog { position:fixed; inset:auto; left:50%; top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 4px); max-width:294.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #ffffffcc; border-radius:10px; color:var(--ink); background:rgba(255,255,255,.82); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
+dialog { position:fixed; inset:auto; left:calc(50% + 3px); top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 4px); max-width:294.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #ffffffcc; border-radius:5px; color:var(--ink); background:rgba(255,255,255,.82); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
 dialog::backdrop { background:transparent; }
 dialog[open] { display:flex; flex-direction:column; animation:open-note .25s ease-out; }
 .close { position:absolute; top:8px; right:8px; z-index:1; display:grid; place-items:center; width:32px; height:32px; border-radius:6px; border:0; background:transparent; font-family:"Roboto Slab",serif; font-weight:300; font-size:22px; color:#888; }
@@ -40,10 +40,10 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .object.is-nudging { animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
 .object.is-nudging::after { animation:object-tint .65s ease; }
 @keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 1deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - .5deg)); } }
-@keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
-.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:#fff; color:#555; border:1px solid #aaa; border-radius:8px; padding:7px 8px; box-shadow:0 5px 22px #00000012; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
+@keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.15; } }
+.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.82); color:#555; border:1px solid #ffffffcc; border-radius:8px; padding:7px 8px; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
 .watch-bubble[hidden] { display:none; }
-.watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:#fff; border-right:1px solid #aaa; border-top:1px solid #aaa; transform:translateY(-50%) rotate(45deg); }
+.watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:rgba(255,255,255,.82); border-right:1px solid #ffffffcc; border-top:1px solid #ffffffcc; transform:translateY(-50%) rotate(45deg); }
 .watch-bubble span { display:block; }
 @keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
 
