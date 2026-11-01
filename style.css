@@ -99,3 +99,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 .site-footer { font-family:"Gowun Dodum",sans-serif; font-weight:400; }
 @media(max-width:600px) { .site-footer .footer-period { display:block; white-space:nowrap; } }
+
+/* 고운돋움 원본의 라틴 서브셋을 푸터에서 확실히 로드합니다. */
+@font-face { font-family:FooterGowunDodum; font-style:normal; font-weight:400; font-display:swap; src:url("https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2") format("woff2"); }
+.site-footer { font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
