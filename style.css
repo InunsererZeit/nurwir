@@ -41,7 +41,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .object.is-nudging::after { animation:object-tint .65s ease; }
 @keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 1deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - .5deg)); } }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.30; } }
-.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.82); color:#555; border:1px solid #ffffffcc; border-radius:0; padding:7px 8px; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
+.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.82); color:#555; border:1px solid #ffffffcc; border-radius:8px; padding:7px 8px; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
 .watch-bubble[hidden] { display:none; }
 .watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:rgba(255,255,255,.82); border-right:1px solid #ffffffcc; border-top:1px solid #ffffffcc; transform:translateY(-50%) rotate(45deg); }
 .watch-bubble span { display:block; }
@@ -78,3 +78,16 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 /* 앞쪽 레이어는 형태를 따르는 80% 투명 그림자로 깊이만 살짝 더합니다. */
 .object.foreground-object { filter:drop-shadow(0 .7cqw .75cqw rgba(0,0,0,.2)); }
+
+/* 모바일 글 창은 내용까지 90% 비율로 축소하되 닫기 터치 영역은 유지합니다. */
+@media(max-width:600px) {
+  dialog { width:calc(67.5% - 3.6px); max-width:265.05px; }
+  .window-body { padding:39.6px 21.6px 21.6px; }
+  .copy { font-size:11.7px; }
+  .copy .english-names { font-size:9.9px; }
+  .copy .glove-note { gap:5.4px; }
+  .solar-forward-icon { width:14.4px; height:14.4px; flex-basis:14.4px; margin-top:4.5px; }
+  .close { top:7.2px; right:7.2px; font-size:19.8px; -webkit-appearance:none; appearance:none; }
+  .close:focus,.close:focus-visible { outline:none; box-shadow:none; }
+  .close:focus-visible { background:rgba(0,0,0,.04); }
+}

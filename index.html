@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=rococo-key-shadows-12">
+  <link rel="stylesheet" href="style.css?v=hatched-paper-mobile-13">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -41,18 +41,18 @@
     }, 500);
     // 오브제 좌표(%)와 크기, 기울기, 겹침 순서. images는 같은 폴더에 둡니다.
     const objects = [
-      {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard-engraved.png',x:3,y:52,width:42,angle:-9,layer:7,text:"CP 드림 및 비윤리적 소재, 스포일러 포함\n민감한 성향의 분께선 열람에 유의해주세요"},
-      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-soft-seal.png',x:6,y:5,width:50,angle:-15,layer:3,text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
-      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',image:'newspaper-folded-edges.png',x:33,y:24,width:56,angle:0,layer:5,text:"소수계 지향\n텍스트 위주, 비정기적 업로드\n\n기본 배려 반사, 편의상 1T1D 유지\n알고있는 장르 위주로 뵙고있어요"},
+      {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard-hatched.png',x:3,y:52,width:42,angle:-9,layer:7,text:"CP 드림 및 비윤리적 소재, 스포일러 포함\n민감한 성향의 분께선 열람에 유의해주세요"},
+      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'engraved-envelope-hatched.png',x:6,y:5,width:50,angle:-15,layer:3,text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
+      {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',image:'newspaper-hatched-sheet.png',x:33,y:24,width:56,angle:0,layer:5,text:"소수계 지향\n텍스트 위주, 비정기적 업로드\n\n기본 배려 반사, 편의상 1T1D 유지\n알고있는 장르 위주로 뵙고있어요"},
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:11,text:"NG\n타임라인 외부의 컨택\n대응할 여력이 부족합니다"}
     ];
     const decorations = [
-      {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-square-ends.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
-      {id:'ribbon-front',label:'앞쪽으로 드리운 푸른 리본',image:'blue-ribbon-square-ends.png',x:0,y:0,width:100,height:100,angle:0,layer:8,ribbon:true,colored:true,front:true},
+      {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-soft-edges.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
+      {id:'ribbon-front',label:'앞쪽으로 드리운 푸른 리본',image:'blue-ribbon-soft-edges.png',x:0,y:0,width:100,height:100,angle:0,layer:8,ribbon:true,colored:true,front:true},
       {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:12,offsetX:-2,offsetY:33},
-      {id:'letter-sheet',label:'신문 아래의 편지글',image:'engraved-letter-bright.png',x:42,y:42,width:44,angle:10,layer:2},
+      {id:'letter-sheet',label:'신문 아래의 편지글',image:'engraved-letter-hatched.png',x:42,y:42,width:44,angle:10,layer:2},
       {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:19.78,y:70.952,width:29.44,angle:-18,layer:10,offsetX:20,offsetY:-20},
-      {id:'key',label:'오래된 열쇠',image:'engraved-key-rococo.png',x:11,y:30,width:22,angle:27,layer:9},
+      {id:'key',label:'오래된 열쇠',image:'engraved-key-rococo.png',x:11,y:30,width:22,angle:27,layer:9,offsetX:5},
     ];
     // 참고 이미지의 베이지색 점을 따라 낱알 진주를 배치합니다(중심 좌표 %).
     const pearlPositions=[
