@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
   <link rel="preload" href="https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=name-highlight-21">
+  <link rel="stylesheet" href="style.css?v=highlight-motion-22">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -92,7 +92,7 @@
         if(index)copy.append(document.createTextNode('\n'));
         if(object.id==='letter'&&index===0&&line.startsWith('해수')){
           const name=document.createElement('span');name.className='name-badge';name.setAttribute('role','img');name.setAttribute('aria-label','해수');
-          name.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 22" aria-hidden="true" focusable="false"><defs><mask id="name-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="22"><rect width="36" height="22" fill="white"/><text x="18" y="15.5" text-anchor="middle" font-size="13" font-weight="700" fill="black">해수</text></mask></defs><rect width="36" height="22" rx="3" fill="currentColor" mask="url(#name-cutout)"/></svg>';
+          name.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 22" aria-hidden="true" focusable="false"><defs><mask id="name-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="22"><rect width="36" height="22" fill="white"/><text x="18" y="15.5" text-anchor="middle" font-size="13" font-weight="700" fill="black">해수</text></mask></defs><rect width="36" height="22" rx="1.5" fill="currentColor" mask="url(#name-cutout)"/></svg>';
 
           copy.append(name,document.createTextNode(line.slice(2)));
          }else if((object.id==='paper'&&(line==='텍스트 위주, 비정기적 업로드'||line==='기본 배려 반사, 편의상 1T1D 유지'))||(object.id==='postcard'&&index===0)){

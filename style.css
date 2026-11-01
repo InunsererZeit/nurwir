@@ -110,4 +110,5 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 /* 글자 부분은 실제로 뚫린 마스크, 형광펜은 줄바꿈마다 이어집니다. */
 .name-badge { display:inline-block; width:2.77em; height:1.69em; vertical-align:-.43em; line-height:1; }
 .name-badge svg { display:block; width:100%; height:100%; font-family:"Gowun Dodum",sans-serif; }
-.text-highlight { color:inherit; background:linear-gradient(to bottom,transparent 53%,rgba(255,190,133,.48) 53%,rgba(255,190,133,.48) 91%,transparent 91%); -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 .08em; }
+.text-highlight { color:inherit; background:linear-gradient(to bottom,transparent 65%,rgba(244,174,82,.48) 65%,rgba(244,174,82,.48) 91%,transparent 91%) left center / 100% 100% no-repeat; -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 .08em; animation:highlight-draw .7s ease-out .15s both; }
+@keyframes highlight-draw { from { background-size:0% 100%; } to { background-size:100% 100%; } }
