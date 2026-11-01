@@ -53,7 +53,6 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
 .site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.04em; flex-shrink:0; }
 
-.watch-bubble [role="img"] { filter:grayscale(1); }
 
 .copy strong { font-weight:700; }
 
@@ -75,3 +74,5 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .number-marker:hover { background:#34312e; }
 
 .site-footer>span:first-child { letter-spacing:-.035em; }
+
+.number-marker[aria-expanded="true"],.number-marker[aria-expanded="true"]:hover { background:#e9914c; color:#fff; }

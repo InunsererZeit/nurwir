@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=square-ribbon-grey-7">
+  <link rel="stylesheet" href="style.css?v=heart-markers-8">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -17,7 +17,7 @@
   </div>
   <div class="page">
     <main aria-label="이야기가 담긴 사물들">
-      <div class="collage" id="collage"><div class="watch-bubble" id="watch-bubble" role="status" hidden><span role="img" aria-label="모래시계">⏳</span></div></div>
+      <div class="collage" id="collage"><div class="watch-bubble" id="watch-bubble" role="status" hidden><span role="img" aria-label="주황색 하트">🧡</span></div></div>
     </main>
     <footer class="site-footer"><span>IN UNSERER ZEIT</span><span>© 2025</span></footer>
   </div>
@@ -79,6 +79,7 @@
       }
       selected = button;
       dialogTrigger=trigger;
+      markerByObject.forEach(marker=>marker.setAttribute("aria-expanded","false"));
       const marker=markerByObject.get(object.id);
       if(marker)marker.setAttribute("aria-expanded","true");
       button.classList.add('is-selected');
@@ -162,15 +163,16 @@
     decorations.forEach(item=>placeItem(item,false));
     objects.forEach(item=>placeItem(item,true));
     const numberedObjects=[
-      {id:'letter',number:1,x:11.8,y:7.6,label:'편지'},
-      {id:'paper',number:2,x:27.9,y:28.3,label:'신문'},
-      {id:'postcard',number:3,x:3.1,y:51.2,label:'사진 엽서'},
-      {id:'gloves',number:4,x:86.9,y:56.2,label:'장갑'}
+      {id:'letter',number:1,x:11.8,y:7.6,offsetX:0,offsetY:2,label:'편지'},
+      {id:'paper',number:2,x:27.9,y:28.3,offsetX:3,offsetY:-1,label:'신문'},
+      {id:'postcard',number:3,x:3.1,y:51.2,offsetX:2,offsetY:1,label:'사진 엽서'},
+      {id:'gloves',number:4,x:86.9,y:56.2,offsetX:1,offsetY:-2,label:'장갑'}
     ];
-    numberedObjects.forEach(({id,number,x,y,label})=>{
+    numberedObjects.forEach(({id,number,x,y,offsetX=0,offsetY=0,label})=>{
       const marker=document.createElement('button');
       marker.type='button';marker.className='number-marker';marker.dataset.opens=id;
       marker.textContent=number;marker.style.left=x+'%';marker.style.top=y+'%';
+      marker.style.translate=offsetX+'px '+offsetY+'px';
       marker.setAttribute('aria-label',number+'. '+label+' 글 열기');
       marker.setAttribute('aria-controls','reading-window');marker.setAttribute('aria-expanded','false');
       markerByObject.set(id,marker);collage.append(marker);
