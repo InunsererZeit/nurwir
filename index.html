@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
   <link rel="preload" href="https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="opening-logo.png" as="image">
-  <link rel="stylesheet" href="style.css?v=image-logo-25">
+  <link rel="stylesheet" href="style.css?v=opening-alignment-26">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -38,7 +38,8 @@
     <button class="close" id="close-window" type="button" aria-label="글 창 닫기">×</button>
     <div class="window-body"><p class="copy" id="window-copy"></p></div>
   </dialog>
-  <!-- Forward 2 Bold Duotone: Solar Icons by 480 Design, CC BY 4.0. See ATTRIBUTIONS.md. -->
+  <!-- Forward 2 Bold Duotone and Arrow Up Outline: Solar Icons by 480 Design, CC BY 4.0. See ATTRIBUTIONS.md. -->
+  <template id="age-arrow-template"><svg class="solar-arrow-up-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4697 3.46967C11.7626 3.17678 12.2374 3.17678 12.5303 3.46967L18.5303 9.46967C18.8232 9.76256 18.8232 10.2374 18.5303 10.5303C18.2374 10.8232 17.7626 10.8232 17.4697 10.5303L12.75 5.81066L12.75 20C12.75 20.4142 12.4142 20.75 12 20.75C11.5858 20.75 11.25 20.4142 11.25 20L11.25 5.81066L6.53033 10.5303C6.23744 10.8232 5.76256 10.8232 5.46967 10.5303C5.17678 10.2374 5.17678 9.76256 5.46967 9.46967L11.4697 3.46967Z" fill="currentColor"/></svg></template>
   <template id="forward-icon-template"><svg class="solar-forward-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><title>Solar Icons · 480 Design · CC BY 4.0</title><g opacity=".5"><path d="M17.6893 12.75H9.5C8.54665 12.75 7.13332 12.4702 5.93677 11.6086C4.70198 10.7196 3.75 9.24444 3.75 7C3.75 6.58578 4.08579 6.25 4.5 6.25C4.91421 6.25 5.25 6.58578 5.25 7C5.25 8.75556 5.96468 9.7804 6.81323 10.3913C7.70002 11.0298 8.78668 11.25 9.5 11.25L17.6893 11.25L18.4393 12L17.6893 12.75Z" fill="currentColor"/><path d="M20.1931 12.2871C20.2298 12.1987 20.25 12.1017 20.25 12C20.25 12.0977 20.231 12.1954 20.1931 12.2871Z" fill="currentColor"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9697 17.5303C14.2626 17.8232 14.7374 17.8232 15.0303 17.5303L20.0303 12.5303C20.3232 12.2374 20.3232 11.7626 20.0303 11.4697L15.0303 6.46967C14.7374 6.17678 14.2626 6.17678 13.9697 6.46967C13.6768 6.76256 13.6768 7.23744 13.9697 7.53033L18.4393 12L13.9697 16.4697C13.6768 16.7626 13.6768 17.2374 13.9697 17.5303Z" fill="currentColor"/></svg></template>
   <script>
     // 인트로는 페이지를 열 때마다 약 0.75초 보여준 뒤 사라집니다.
@@ -55,7 +56,7 @@
     // 오브제 좌표(%)와 크기, 기울기, 겹침 순서. images는 같은 폴더에 둡니다.
     const objects = [
       {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard-hatched.png',x:3,y:52.8,width:42,angle:-9,layer:7,text:"CP 드림 및 비윤리적 소재, 스포일러 포함\n민감한 성향의 분께선 열람에 유의해주세요"},
-      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'envelope-light-paper-dark-wax.png',x:6,y:4,width:46.5,angle:-15,layer:3,offsetY:7,text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
+      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'envelope-light-paper-dark-wax.png',x:6,y:4,width:46.5,angle:-15,layer:3,offsetY:7,text:"해수 @InunsererZeit\n20 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
       {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',image:'newspaper-etched-light.png',x:33,y:21.8,width:56,angle:0,layer:5,text:"소수계 지향\n텍스트 위주, 비정기적 업로드\n\n기본 배려 반사, 편의상 1T1D 유지\n알고있는 장르 위주로 뵙고있어요"},
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'gloves-right-thumb.png',x:57.29296875,y:52.3955078125,width:36.9140625,angle:-21,layer:11,text:"NG\n타임라인 외부의 컨택\n대응할 여력이 부족합니다"}
     ];
@@ -107,7 +108,11 @@
           name.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 22" aria-hidden="true" focusable="false"><defs><mask id="name-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="22"><rect width="36" height="22" fill="white"/><text x="18" y="15.5" text-anchor="middle" font-size="13" font-weight="700" fill="black">해수</text></mask></defs><rect width="36" height="22" rx="1.5" fill="currentColor" mask="url(#name-cutout)"/></svg>';
 
           copy.append(name,document.createTextNode(' '+line.slice(2)));
-         }else if((object.id==='paper'&&(line==='텍스트 위주, 비정기적 업로드'||line==='기본 배려 반사, 편의상 1T1D 유지'))||(object.id==='postcard'&&index===0)){
+         }else if(object.id==='letter'&&index===1&&line.startsWith('20 ')){
+          const age=document.createElement('span');age.className='age-value';age.setAttribute('role','img');age.setAttribute('aria-label','20세 이상');
+          age.append(document.createTextNode('20'),document.getElementById('age-arrow-template').content.cloneNode(true));
+          copy.append(age,document.createTextNode(line.slice(2)));
+        }else if((object.id==='paper'&&(line==='텍스트 위주, 비정기적 업로드'||line==='기본 배려 반사, 편의상 1T1D 유지'))||(object.id==='postcard'&&index===0)){
           const highlight=document.createElement('mark');highlight.className='text-highlight';highlight.textContent=line;copy.append(highlight);
         }else if((object.id==='letter'&&line==='마법명가 차남으로 살아남는 법')||(object.id==='gloves'&&line==='NG')){
           const strong=document.createElement('strong');strong.textContent=line;
@@ -228,6 +233,16 @@
       footer.style.translate='none';
       const bottom=Math.max(...[...collage.querySelectorAll('.object:not(.ribbon-object)')].map(e=>visibleBottom(e,e.dataset.object==='gloves'?1/1.125:1)));
       footer.style.translate='0 '+(bottom+59-footer.firstElementChild.getBoundingClientRect().top)+'px';
+      positionOpening();
+    }
+    function positionOpening(){
+      const marker=markerByObject.get('letter');
+      const footer=document.querySelector('.site-footer');
+      if(!marker||!footer)return;
+      const top=marker.getBoundingClientRect().top;
+      const bottom=Math.max(...[...footer.children].map(e=>e.getBoundingClientRect().bottom));
+      introScreen.style.setProperty('--opening-top',top+'px');
+      introScreen.style.setProperty('--opening-height',Math.max(0,bottom-top)+'px');
     }
     window.addEventListener('resize',positionFooter);
     window.addEventListener('load',positionFooter);

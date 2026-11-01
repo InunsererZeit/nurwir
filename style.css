@@ -112,13 +112,13 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 @keyframes highlight-draw { from { background-size:0% 100%; } to { background-size:100% 100%; } }
 
 /* 참고 구도: 위의 세 정보, 중앙 로고, 아래 안내문과 계정명. */
-.intro-composition { position:relative; width:min(90vw,540px); height:min(70svh,520px); color:#444; font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
+.intro-composition { position:absolute; left:50%; top:var(--opening-top,10svh); translate:-50% 0; width:min(90vw,540px); height:var(--opening-height,80svh); color:#444; font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
 .intro-composition p { margin:0; }
-.intro-topline { position:absolute; top:8%; inset-inline:clamp(16px,4vw,24px); display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:12px; font-size:calc(clamp(8px,1.8vw,11px) + 1.5px); line-height:1.65; animation:metadata-arrive .35s ease-out both; }
+.intro-topline { position:absolute; top:0; inset-inline:clamp(24px,6vw,40px); display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:12px; font-size:calc(clamp(8px,1.8vw,11px) + 1.5px); line-height:1.65; animation:metadata-arrive .35s ease-out both; }
 .intro-pairing { text-align:center; padding-top:2px; }
 .intro-until { text-align:right; }
 .intro-label { display:inline-block; background:#444; color:#fff; padding:1px 5px; border-radius:1px; line-height:1.5; margin-bottom:3px; }
-.intro-bottomline { position:absolute; bottom:7%; inset-inline:clamp(16px,4vw,24px); display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:end; animation:metadata-arrive .35s ease-out both; }
+.intro-bottomline { position:absolute; bottom:0; inset-inline:clamp(24px,6vw,40px); display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:end; animation:metadata-arrive .35s ease-out both; }
 .intro-disclaimer { font-size:clamp(6.4px,1.65vw,9px); line-height:1.65; white-space:nowrap; }
 .intro-handle { font-size:calc(clamp(8px,1.8vw,11px) + 1.5px); white-space:nowrap; padding-bottom:2px; }
 .intro-leaving .intro-topline,.intro-leaving .intro-bottomline { animation:logo-depart .42s ease-in both; }
@@ -126,8 +126,11 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 @keyframes metadata-arrive { from { opacity:0; translate:0 6px; } to { opacity:1; translate:0 0; } }
 
 /* 중앙 텍스트 대신 사용자 로고 이미지: 기존 등장·그레인·블러 퇴장을 유지합니다. */
-.intro-brand { position:absolute; left:50%; top:50%; translate:-50% -50%; display:block; width:clamp(140px,37vw,190px); height:auto; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; }
+.intro-brand { position:absolute; left:50%; top:50%; translate:-50% -50%; display:block; width:clamp(170px,44vw,230px); height:auto; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; }
 .intro-disclaimer>.intro-label { font-size:calc(1em + 1.5px); }
 
 /* 원본 로고의 글자 형태를 보존하고 색상만 다크 그레이로 보정합니다. */
 .intro-brand img { display:block; width:100%; height:auto; filter:grayscale(1) brightness(1.22); }
+
+.age-value { display:inline-flex; align-items:center; gap:.03em; white-space:nowrap; }
+.solar-arrow-up-icon { display:block; width:1em; height:1em; flex:none; color:inherit; }
