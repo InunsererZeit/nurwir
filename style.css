@@ -7,7 +7,7 @@ main { width:100%; margin:auto 0; padding:0; }
 /* 모든 기기에서 같은 비율과 배치. 좌표는 index.html의 objects에서 수정합니다. */
 .collage { position:relative; width:min(100%,540px,calc(78svh - 10px)); aspect-ratio:900 / 1100; container-type:inline-size; margin:0 auto; isolation:isolate; }
 .object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 3px 2px rgba(0,0,0,.2)); }
-.object img { display:block; width:100%; height:auto; filter:grayscale(1); user-select:none; }
+.object img { display:block; width:100%; height:auto; filter:grayscale(1) brightness(.94) contrast(.96); user-select:none; }
 /* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
 .object.is-selected::after { opacity:.30; }
