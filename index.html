@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
   <link rel="preload" href="https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=intro-grey-20">
+  <link rel="stylesheet" href="style.css?v=name-highlight-21">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -29,7 +29,7 @@
   <!-- Forward 2 Bold Duotone: Solar Icons by 480 Design, CC BY 4.0. See ATTRIBUTIONS.md. -->
   <template id="forward-icon-template"><svg class="solar-forward-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><title>Solar Icons · 480 Design · CC BY 4.0</title><g opacity=".5"><path d="M17.6893 12.75H9.5C8.54665 12.75 7.13332 12.4702 5.93677 11.6086C4.70198 10.7196 3.75 9.24444 3.75 7C3.75 6.58578 4.08579 6.25 4.5 6.25C4.91421 6.25 5.25 6.58578 5.25 7C5.25 8.75556 5.96468 9.7804 6.81323 10.3913C7.70002 11.0298 8.78668 11.25 9.5 11.25L17.6893 11.25L18.4393 12L17.6893 12.75Z" fill="currentColor"/><path d="M20.1931 12.2871C20.2298 12.1987 20.25 12.1017 20.25 12C20.25 12.0977 20.231 12.1954 20.1931 12.2871Z" fill="currentColor"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9697 17.5303C14.2626 17.8232 14.7374 17.8232 15.0303 17.5303L20.0303 12.5303C20.3232 12.2374 20.3232 11.7626 20.0303 11.4697L15.0303 6.46967C14.7374 6.17678 14.2626 6.17678 13.9697 6.46967C13.6768 6.76256 13.6768 7.23744 13.9697 7.53033L18.4393 12L13.9697 16.4697C13.6768 16.7626 13.6768 17.2374 13.9697 17.5303Z" fill="currentColor"/></svg></template>
   <script>
-    // 인트로는 페이지를 열 때마다 약 0.5초 보여준 뒤 사라집니다.
+    // 인트로는 페이지를 열 때마다 약 0.75초 보여준 뒤 사라집니다.
     const introScreen = document.getElementById('intro-screen');
     const mainPage = document.querySelector('.page');
     mainPage.inert = true;
@@ -39,7 +39,7 @@
         introScreen.hidden = true;
         mainPage.inert = false;
       }, 460);
-    }, 1000);
+    }, 750);
     // 오브제 좌표(%)와 크기, 기울기, 겹침 순서. images는 같은 폴더에 둡니다.
     const objects = [
       {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard-hatched.png',x:3,y:52.8,width:42,angle:-9,layer:7,text:"CP 드림 및 비윤리적 소재, 스포일러 포함\n민감한 성향의 분께선 열람에 유의해주세요"},
@@ -91,8 +91,12 @@
       object.text.split('\n').forEach((line,index)=>{
         if(index)copy.append(document.createTextNode('\n'));
         if(object.id==='letter'&&index===0&&line.startsWith('해수')){
-          const name=document.createElement('strong');name.textContent='해수';
+          const name=document.createElement('span');name.className='name-badge';name.setAttribute('role','img');name.setAttribute('aria-label','해수');
+          name.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 22" aria-hidden="true" focusable="false"><defs><mask id="name-cutout" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="22"><rect width="36" height="22" fill="white"/><text x="18" y="15.5" text-anchor="middle" font-size="13" font-weight="700" fill="black">해수</text></mask></defs><rect width="36" height="22" rx="3" fill="currentColor" mask="url(#name-cutout)"/></svg>';
+
           copy.append(name,document.createTextNode(line.slice(2)));
+         }else if((object.id==='paper'&&(line==='텍스트 위주, 비정기적 업로드'||line==='기본 배려 반사, 편의상 1T1D 유지'))||(object.id==='postcard'&&index===0)){
+          const highlight=document.createElement('mark');highlight.className='text-highlight';highlight.textContent=line;copy.append(highlight);
         }else if((object.id==='letter'&&line==='마법명가 차남으로 살아남는 법')||(object.id==='gloves'&&line==='NG')){
           const strong=document.createElement('strong');strong.textContent=line;copy.append(strong);
         }else if(object.id==='gloves'&&index===2){
