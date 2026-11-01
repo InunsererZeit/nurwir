@@ -103,3 +103,6 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 /* 고운돋움 원본의 라틴 서브셋을 푸터에서 확실히 로드합니다. */
 @font-face { font-family:FooterGowunDodum; font-style:normal; font-weight:400; font-display:swap; src:url("https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2") format("woff2"); }
 .site-footer { font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
+
+@media(max-width:600px) { .site-footer>span:first-child { white-space:nowrap; } }
+@media(max-width:360px) { .site-footer { padding-left:24px; padding-right:24px; gap:12px; } }
