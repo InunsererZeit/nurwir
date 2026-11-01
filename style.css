@@ -1,4 +1,4 @@
-:root { color-scheme: light; --ink:#222; --accent:#ffae68; }
+:root { color-scheme: light; --ink:#222; --accent:#c9c9c9; }
 * { box-sizing:border-box; }
 body { margin:0; background:#fff; color:var(--ink); font-family:"Roboto Slab","Gowun Dodum",serif; -webkit-font-smoothing:antialiased; }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
@@ -26,7 +26,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 /* 흰 단색 배경의 3줄 로고: 등장 → 0.5초 후 블러와 함께 퇴장 */
 .intro-screen { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; background:#fff; opacity:1; transition:opacity .28s ease .14s,visibility 0s .42s; }
 .intro-screen[hidden] { display:none; }
-.intro-logo { margin:0; color:#222; font-family:"Playfair Display",serif; font-size:48px; font-weight:400; line-height:1.12; text-align:center; letter-spacing:-.035em; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; transition:opacity .32s ease,filter .32s ease,transform .32s ease; }
+.intro-logo { margin:0; color:#444; font-family:"Playfair Display",serif; font-size:48px; font-weight:400; line-height:.7466667; text-align:center; letter-spacing:-.035em; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; transition:opacity .32s ease,filter .32s ease,transform .32s ease; }
 .intro-logo span { display:block; }
 .intro-leaving .intro-logo { animation:logo-depart .42s ease-in both; }
 .intro-leaving .intro-screen { opacity:0; visibility:hidden; }
@@ -51,7 +51,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 /* 필터 정의와 양쪽 푸터 */
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
-.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.04em; flex-shrink:0; }
+.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.02em; flex-shrink:0; }
 
 
 .copy strong { font-weight:700; }
@@ -97,7 +97,7 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .site-footer>span:first-child { flex:1; min-width:0; line-height:1.4; }
 .site-footer>span:last-child { white-space:nowrap; line-height:1.4; }
 
-.site-footer { font-family:"Gowun Dodum",sans-serif; font-weight:400; }
+.site-footer { font-family:"Gowun Dodum",sans-serif; font-weight:700; font-synthesis:weight; }
 @media(max-width:600px) { .site-footer .footer-period { display:block; white-space:nowrap; } }
 
 /* 고운돋움 원본의 라틴 서브셋을 푸터에서 확실히 로드합니다. */
