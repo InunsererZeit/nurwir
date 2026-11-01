@@ -26,14 +26,12 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 /* 흰 단색 배경의 3줄 로고: 등장 → 0.75초 후 블러와 함께 퇴장 */
 .intro-screen { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; background:#fff; opacity:1; transition:opacity .28s ease .14s,visibility 0s .42s; }
 .intro-screen[hidden] { display:none; }
-.intro-logo { margin:0; color:#444; font-family:"Playfair Display",serif; font-size:48px; font-weight:400; line-height:1.12; text-align:center; letter-spacing:-.035em; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; transition:opacity .32s ease,filter .32s ease,transform .32s ease; }
-.intro-logo span { display:block; }
-.intro-leaving .intro-logo { animation:logo-depart .42s ease-in both; }
+.intro-leaving .intro-brand { animation:logo-depart .42s ease-in both; }
 .intro-leaving .intro-screen { opacity:0; visibility:hidden; }
 .intro-leaving .page { opacity:1; transition-delay:.14s; }
 @keyframes logo-depart { 0% { opacity:1; filter:blur(0) url(#logo-grain); transform:translateY(0) scale(1); } 45% { opacity:.85; filter:blur(3px) url(#logo-grain); } 100% { opacity:0; filter:blur(13px) url(#logo-grain); transform:translateY(-12px) scale(1.035); } }
 @keyframes logo-arrive { from { opacity:0; transform:translateY(16px); filter:blur(3px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
-@media(prefers-reduced-motion:reduce) { .intro-logo,.intro-leaving .intro-logo { transform:none; filter:none; } }
+@media(prefers-reduced-motion:reduce) { .intro-brand,.intro-leaving .intro-brand { transform:none; filter:none; } }
 
 /* 모든 사물은 클릭 가능. 팝업이 없는 사물도 살짝 움직입니다. */
 
@@ -114,16 +112,22 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 @keyframes highlight-draw { from { background-size:0% 100%; } to { background-size:100% 100%; } }
 
 /* 참고 구도: 위의 세 정보, 중앙 로고, 아래 안내문과 계정명. */
-.intro-composition { position:relative; width:min(90vw,540px); height:min(70svh,520px); color:#444; }
+.intro-composition { position:relative; width:min(90vw,540px); height:min(70svh,520px); color:#444; font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
 .intro-composition p { margin:0; }
-.intro-topline { position:absolute; top:8%; inset-inline:0; display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:12px; font-size:clamp(8px,1.8vw,11px); line-height:1.65; animation:metadata-arrive .35s ease-out both; }
+.intro-topline { position:absolute; top:8%; inset-inline:clamp(16px,4vw,24px); display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:12px; font-size:calc(clamp(8px,1.8vw,11px) + 1.5px); line-height:1.65; animation:metadata-arrive .35s ease-out both; }
 .intro-pairing { text-align:center; padding-top:2px; }
 .intro-until { text-align:right; }
 .intro-label { display:inline-block; background:#444; color:#fff; padding:1px 5px; border-radius:1px; line-height:1.5; margin-bottom:3px; }
-.intro-composition .intro-logo { position:absolute; top:50%; inset-inline:0; margin-top:-80.64px; }
-.intro-bottomline { position:absolute; bottom:7%; inset-inline:0; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:end; animation:metadata-arrive .35s ease-out both; }
+.intro-bottomline { position:absolute; bottom:7%; inset-inline:clamp(16px,4vw,24px); display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:end; animation:metadata-arrive .35s ease-out both; }
 .intro-disclaimer { font-size:clamp(6.4px,1.65vw,9px); line-height:1.65; white-space:nowrap; }
-.intro-handle { font-size:clamp(8px,1.8vw,11px); white-space:nowrap; padding-bottom:2px; }
+.intro-handle { font-size:calc(clamp(8px,1.8vw,11px) + 1.5px); white-space:nowrap; padding-bottom:2px; }
 .intro-leaving .intro-topline,.intro-leaving .intro-bottomline { animation:logo-depart .42s ease-in both; }
 .name-badge text { -webkit-text-stroke:0; }
 @keyframes metadata-arrive { from { opacity:0; translate:0 6px; } to { opacity:1; translate:0 0; } }
+
+/* 중앙 텍스트 대신 사용자 로고 이미지: 기존 등장·그레인·블러 퇴장을 유지합니다. */
+.intro-brand { position:absolute; left:50%; top:50%; translate:-50% -50%; display:block; width:clamp(140px,37vw,190px); height:auto; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; }
+.intro-disclaimer>.intro-label { font-size:calc(1em + 1.5px); }
+
+/* 원본 로고의 글자 형태를 보존하고 색상만 다크 그레이로 보정합니다. */
+.intro-brand img { display:block; width:100%; height:auto; filter:grayscale(1) brightness(1.22); }
