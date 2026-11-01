@@ -12,14 +12,14 @@ main { width:100%; margin:auto 0; padding:0; }
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
 .object.is-selected::after { opacity:.30; }
 .object:focus-visible { outline:1px dashed #777; outline-offset:7px; }
-dialog { position:fixed; inset:auto; left:calc(50% + 3px); top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 4px); max-width:294.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #ffffffcc; border-radius:10px; color:var(--ink); background:rgba(255,255,255,.82); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
+dialog { position:fixed; inset:auto; left:calc(50% + 3px); top:50%; transform:translate(-50%,-50%); z-index:100; width:calc(75% - 4px); max-width:294.5px; max-height:calc(100svh - 48px); margin:0; padding:0; border:1px solid #ffffffcc; border-radius:10px; color:var(--ink); background:rgba(255,255,255,.72); -webkit-backdrop-filter:blur(18px) saturate(1.12); backdrop-filter:blur(18px) saturate(1.12); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; overflow:hidden; }
 dialog::backdrop { background:transparent; }
 dialog[open] { display:flex; flex-direction:column; animation:open-note .25s ease-out; }
 .close { position:absolute; top:8px; right:8px; z-index:1; display:grid; place-items:center; width:32px; height:32px; border-radius:6px; border:0; background:transparent; font-family:"Roboto Slab",serif; font-weight:300; font-size:22px; color:#888; }
 .close:hover { background:#f5f5f5; color:#222; }
 .close:focus-visible { outline:1px solid #555; }
 .window-body { min-height:0; padding:44px 24px 24px; overflow:auto; overscroll-behavior:contain; }
-.copy { margin:0; font-size:13px; line-height:2; color:#5e5e5e; white-space:pre-wrap; overflow-wrap:anywhere; word-break:keep-all; }
+.copy { -webkit-text-stroke:.1px currentColor; margin:0; font-size:13px; line-height:2; color:#5e5e5e; white-space:pre-wrap; overflow-wrap:anywhere; word-break:keep-all; }
 @keyframes open-note { from { opacity:0; transform:translate(-50%,calc(-50% + 6px)); } to { opacity:1; transform:translate(-50%,-50%); } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
 
@@ -41,9 +41,9 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .object.is-nudging::after { animation:object-tint .65s ease; }
 @keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 1deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - .5deg)); } }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.30; } }
-.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.82); color:#555; border:1px solid #ffffffcc; border-radius:8px; padding:7px 8px; -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
+.watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:rgba(255,255,255,.72); color:#555; border:1px solid #ffffffcc; border-radius:8px; padding:7px 8px; -webkit-backdrop-filter:blur(18px) saturate(1.12); backdrop-filter:blur(18px) saturate(1.12); box-shadow:0 0 10px 2px #ffffffb3,0 0 24px 4px #ffffff59,0 18px 90px #0000001a,0 2px 12px #0000000a; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
 .watch-bubble[hidden] { display:none; }
-.watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:rgba(255,255,255,.82); border-right:1px solid #ffffffcc; border-top:1px solid #ffffffcc; transform:translateY(-50%) rotate(45deg); }
+.watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:rgba(255,255,255,.72); border-right:1px solid #ffffffcc; border-top:1px solid #ffffffcc; transform:translateY(-50%) rotate(45deg); }
 .watch-bubble span { display:block; }
 @keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
 
@@ -54,9 +54,9 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.02em; flex-shrink:0; }
 
 
-.copy strong { font-weight:700; }
+.copy strong { font-weight:700; -webkit-text-stroke:0; }
 
-.copy .english-names { font-size:11px; }
+.copy .english-names { font-size:11px; -webkit-text-stroke:0; }
 .copy .english-names,.copy .glove-note-text { opacity:.7; }
 
 .copy .glove-note { display:inline-flex; align-items:flex-start; gap:6px; width:100%; vertical-align:top; white-space:normal; }
@@ -110,5 +110,20 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 /* 글자 부분은 실제로 뚫린 마스크, 형광펜은 줄바꿈마다 이어집니다. */
 .name-badge { display:inline-block; width:2.77em; height:1.69em; vertical-align:-.43em; line-height:1; }
 .name-badge svg { display:block; width:100%; height:100%; font-family:"Gowun Dodum",sans-serif; }
-.text-highlight { color:inherit; background:linear-gradient(to bottom,transparent 65%,rgba(244,174,82,.48) 65%,rgba(244,174,82,.48) 91%,transparent 91%) left center / 100% 100% no-repeat; -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 .08em; animation:highlight-draw .7s ease-out .15s both; }
+.text-highlight { color:inherit; background:linear-gradient(to bottom,transparent 65%,rgba(244,174,82,.48) 65%,rgba(244,174,82,.48) 91%,transparent 91%) left center / 100% 100% no-repeat; -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 .08em; animation:highlight-draw .75s ease-out both; }
 @keyframes highlight-draw { from { background-size:0% 100%; } to { background-size:100% 100%; } }
+
+/* 참고 구도: 위의 세 정보, 중앙 로고, 아래 안내문과 계정명. */
+.intro-composition { position:relative; width:min(90vw,540px); height:min(70svh,520px); color:#444; }
+.intro-composition p { margin:0; }
+.intro-topline { position:absolute; top:8%; inset-inline:0; display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:12px; font-size:clamp(8px,1.8vw,11px); line-height:1.65; animation:metadata-arrive .35s ease-out both; }
+.intro-pairing { text-align:center; padding-top:2px; }
+.intro-until { text-align:right; }
+.intro-label { display:inline-block; background:#444; color:#fff; padding:1px 5px; border-radius:1px; line-height:1.5; margin-bottom:3px; }
+.intro-composition .intro-logo { position:absolute; top:50%; inset-inline:0; margin-top:-80.64px; }
+.intro-bottomline { position:absolute; bottom:7%; inset-inline:0; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:end; animation:metadata-arrive .35s ease-out both; }
+.intro-disclaimer { font-size:clamp(6.4px,1.65vw,9px); line-height:1.65; white-space:nowrap; }
+.intro-handle { font-size:clamp(8px,1.8vw,11px); white-space:nowrap; padding-bottom:2px; }
+.intro-leaving .intro-topline,.intro-leaving .intro-bottomline { animation:logo-depart .42s ease-in both; }
+.name-badge text { -webkit-text-stroke:0; }
+@keyframes metadata-arrive { from { opacity:0; translate:0 6px; } to { opacity:1; translate:0 0; } }
