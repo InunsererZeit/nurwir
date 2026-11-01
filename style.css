@@ -96,3 +96,6 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .site-footer { align-items:flex-start; }
 .site-footer>span:first-child { flex:1; min-width:0; line-height:1.4; }
 .site-footer>span:last-child { white-space:nowrap; line-height:1.4; }
+
+.site-footer { font-family:"Gowun Dodum",sans-serif; font-weight:400; }
+@media(max-width:600px) { .site-footer .footer-period { display:block; white-space:nowrap; } }
