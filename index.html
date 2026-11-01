@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
   <link rel="preload" href="https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=opening-engraving-23">
+  <link rel="stylesheet" href="style.css?v=glove-right-thumb-24">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -54,9 +54,9 @@
     // 오브제 좌표(%)와 크기, 기울기, 겹침 순서. images는 같은 폴더에 둡니다.
     const objects = [
       {id:'postcard',label:'노이슈트렐리츠 궁전 엽서',image:'palace-postcard-hatched.png',x:3,y:52.8,width:42,angle:-9,layer:7,text:"CP 드림 및 비윤리적 소재, 스포일러 포함\n민감한 성향의 분께선 열람에 유의해주세요"},
-      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'envelope-light-paper-dark-wax.png',x:6,y:4,width:46.5,angle:-15,layer:3,text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
+      {id:'letter',label:'인장이 찍힌 편지 봉투 — 나의 소개',image:'envelope-light-paper-dark-wax.png',x:6,y:4,width:46.5,angle:-15,layer:3,offsetY:7,text:"해수 @InunsererZeit\n20↑ 온리 반이입\n\n마법명가 차남으로 살아남는 법\n알버트 메클렌부르크 × 샤를로테 비텔스바흐\nAlbert Mecklenburg × Charlotte Wittelsbach"},
       {id:'paper',label:'Neustrelitzer Zeitung 신문 — 기록',image:'newspaper-etched-light.png',x:33,y:21.8,width:56,angle:0,layer:5,text:"소수계 지향\n텍스트 위주, 비정기적 업로드\n\n기본 배려 반사, 편의상 1T1D 유지\n알고있는 장르 위주로 뵙고있어요"},
-      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'gloves-restored-thumb.png',x:57.29296875,y:52.3955078125,width:36.9140625,angle:-21,layer:11,text:"NG\n타임라인 외부의 컨택\n대응할 여력이 부족합니다"}
+      {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'gloves-right-thumb.png',x:57.29296875,y:52.3955078125,width:36.9140625,angle:-21,layer:11,text:"NG\n타임라인 외부의 컨택\n대응할 여력이 부족합니다"}
     ];
     const decorations = [
       {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-fine-hatch.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
@@ -182,8 +182,8 @@
     decorations.forEach(item=>placeItem(item,false));
     objects.forEach(item=>placeItem(item,true));
     const numberedObjects=[
-      {id:'letter',number:1,x:12.4,y:7.4,offsetX:-3,offsetY:6,label:'편지'},
-      {id:'paper',number:2,x:27.9,y:28.3,offsetX:8,offsetY:-3,label:'신문'},
+      {id:'letter',number:1,x:12.4,y:7.4,offsetX:-7,offsetY:3,label:'편지'},
+      {id:'paper',number:2,x:27.9,y:28.3,offsetX:9,offsetY:-6,label:'신문'},
       {id:'postcard',number:3,x:3.1,y:52,offsetX:2,offsetY:1,label:'사진 엽서'},
       {id:'gloves',number:4,x:86.9,y:57.2,offsetX:1,offsetY:-2,label:'장갑'}
     ];
@@ -191,7 +191,8 @@
       const marker=document.createElement('button');
       marker.type='button';marker.className='number-marker';marker.dataset.opens=id;
       marker.textContent=number;marker.style.left=x+'%';marker.style.top=y+'%';
-      marker.style.translate=offsetX+'px '+offsetY+'px';
+      // 540px 기준 이동량을 콜라주 비율로 환산해 PC·모바일에서 같은 위치를 유지합니다.
+      marker.style.translate=(offsetX/540*100)+'cqw '+(offsetY/540*100)+'cqw';
       marker.setAttribute('aria-label',number+'. '+label+' 글 열기');
       marker.setAttribute('aria-controls','reading-window');marker.setAttribute('aria-expanded','false');
       markerByObject.set(id,marker);collage.append(marker);
