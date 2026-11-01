@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=refined-collage-3">
+  <link rel="stylesheet" href="style.css?v=ribbon-letter-4">
 </head>
 <body>
-  <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V1H0Z M.84 .3H1V1H.84Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
+  <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
   <div class="intro-screen" id="intro-screen">
     <h1 class="intro-logo" aria-label="In unserer Zeit"><span aria-hidden="true">In</span><span aria-hidden="true">unserer</span><span aria-hidden="true">Zeit</span></h1>
   </div>
@@ -27,7 +27,6 @@
   </dialog>
   <!-- Forward 2 Bold Duotone: Solar Icons by 480 Design, CC BY 4.0. See ATTRIBUTIONS.md. -->
   <template id="forward-icon-template"><svg class="solar-forward-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><title>Solar Icons · 480 Design · CC BY 4.0</title><g opacity=".5"><path d="M17.6893 12.75H9.5C8.54665 12.75 7.13332 12.4702 5.93677 11.6086C4.70198 10.7196 3.75 9.24444 3.75 7C3.75 6.58578 4.08579 6.25 4.5 6.25C4.91421 6.25 5.25 6.58578 5.25 7C5.25 8.75556 5.96468 9.7804 6.81323 10.3913C7.70002 11.0298 8.78668 11.25 9.5 11.25L17.6893 11.25L18.4393 12L17.6893 12.75Z" fill="currentColor"/><path d="M20.1931 12.2871C20.2298 12.1987 20.25 12.1017 20.25 12C20.25 12.0977 20.231 12.1954 20.1931 12.2871Z" fill="currentColor"/></g><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9697 17.5303C14.2626 17.8232 14.7374 17.8232 15.0303 17.5303L20.0303 12.5303C20.3232 12.2374 20.3232 11.7626 20.0303 11.4697L15.0303 6.46967C14.7374 6.17678 14.2626 6.17678 13.9697 6.46967C13.6768 6.76256 13.6768 7.23744 13.9697 7.53033L18.4393 12L13.9697 16.4697C13.6768 16.7626 13.6768 17.2374 13.9697 17.5303Z" fill="currentColor"/></svg></template>
-  <template id="letter-template"><span class="letter-sheet" lang="de"><span class="letter-date">Neustrelitz, im Frühling.</span><span class="letter-salutation">Meine liebe Freundin,</span><span>der Morgen liegt still über den Dächern, und vom Garten her zieht ein kühler Wind an mein Fenster. Ich habe die Zeitung neben Deinen letzten Brief gelegt und denke daran, wie viel ein einzelner Tag zu bewahren vermag.</span><span>Gestern führte mich mein Weg am Carolinenstift vorüber. Hinter den Fenstern begann schon früh die Arbeit. Auf dem Markte standen die ersten Blumen; eine ältere Dame trug weiße Handschuhe und blieb lange bei den Veilchen stehen.</span><span>Es sind die kleinen Dinge, die mir im Gedächtnis bleiben: das leise Schlagen einer Uhr, ein Licht im Zimmer, das Band zwischen den Seiten eines Buches. Ich möchte sie sammeln, ehe der Abend sie fortnimmt.</span><span>Schreibe mir bald. Bis dahin lege ich diesen Brief zu den anderen Erinnerungen.</span><span class="letter-signature">In treuer Verbundenheit.</span></span></template>
   <script>
     // 인트로는 페이지를 열 때마다 약 0.5초 보여준 뒤 사라집니다.
     const introScreen = document.getElementById('intro-screen');
@@ -48,10 +47,10 @@
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:11,text:"NG\n타임라인 외부의 컨택\n대응할 여력이 부족합니다"}
     ];
     const decorations = [
-      {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-matte.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
-      {id:'ribbon-front',label:'앞쪽으로 드리운 푸른 리본',image:'blue-ribbon-matte.png',x:0,y:0,width:100,height:100,angle:0,layer:8,ribbon:true,colored:true,front:true},
+      {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-flow.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
+      {id:'ribbon-front',label:'앞쪽으로 드리운 푸른 리본',image:'blue-ribbon-flow.png',x:0,y:0,width:100,height:100,angle:0,layer:8,ribbon:true,colored:true,front:true},
       {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:12,offsetX:-2,offsetY:33},
-      {id:'letter-sheet',label:'신문 아래의 편지글',kind:'letter-sheet',x:42,y:42,width:44,angle:10,layer:2},
+      {id:'letter-sheet',label:'신문 아래의 편지글',image:'engraved-letter-sheet.png',x:42,y:42,width:44,angle:10,layer:2},
       {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:19.78,y:70.952,width:29.44,angle:-18,layer:10,offsetX:20,offsetY:-20},
       {id:'key',label:'오래된 열쇠',image:'engraved-key.png',x:11,y:30,width:22,angle:27,layer:9},
     ];
@@ -153,13 +152,8 @@
       if(popup){element.setAttribute('aria-controls','reading-window');element.setAttribute('aria-expanded','false');}
       if(item.action==='watch'){watchButton=element;element.setAttribute('aria-controls','watch-bubble');element.setAttribute('aria-expanded','false');}
       for(const [name,value] of Object.entries({x:item.x+'%',y:item.y+'%',width:item.width+'%',angle:item.angle+'deg',layer:item.layer,'offset-x':(item.offsetX||0)+'px','offset-y':(item.offsetY||0)+'px'}))element.style.setProperty('--'+name,value);
-      if(item.kind){
-        element.classList.add('printed-object');
-        element.append(document.getElementById('letter-template').content.cloneNode(true));
-      }else{
-        element.style.setProperty('--image','url("'+item.image+'")');
-        const image=document.createElement('img');image.src=item.image;image.alt='';image.draggable=false;element.append(image);
-      }
+      element.style.setProperty('--image','url("'+item.image+'")');
+      const image=document.createElement('img');image.src=item.image;image.alt='';image.draggable=false;element.append(image);
       itemByElement.set(element,item);
       elementsById.set(item.id,element);
       collage.append(element);

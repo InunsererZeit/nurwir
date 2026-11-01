@@ -41,34 +41,6 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .object.is-nudging::after { animation:object-tint .65s ease; }
 @keyframes object-nudge { 0%,100% { transform:rotate(var(--angle)); } 35% { transform:translateY(-2px) rotate(calc(var(--angle) + 1deg)); } 70% { transform:translateY(1px) rotate(calc(var(--angle) - .5deg)); } }
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
-.printed-object { text-align:left; }
-.printed-object::after { mask:none; -webkit-mask:none; }
-.letter-sheet { display:block; background:#fafafa; color:#202020; border:.1cqw solid #999; overflow:hidden; }
-.letter-sheet { display:block; background:#fafafa; color:#202020; border:.1cqw solid #999; overflow:hidden; }
-.newspaper { font-family:"UnifrakturMaguntia",serif; display:flex; flex-direction:column; aspect-ratio:620 / 760; padding:2.8%; box-shadow:inset 0 0 2cqw #00000009; }
-.newspaper span { display:block; }
-.news-datebar { display:flex!important; justify-content:space-between; font-size:.8cqw; border-top:.15cqw solid #222; padding:.5cqw 0; }
-.news-masthead { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-weight:700; font-size:4.1cqw; white-space:nowrap; line-height:1.13; text-align:center; letter-spacing:-.025em; padding:.4cqw 0 .7cqw; border-top:.1cqw solid #333; }
-.news-subtitle { text-align:center; font-size:1.18cqw; padding:.4cqw 0 .7cqw; border-bottom:.4cqw double #222; }
-.news-business { display:grid!important; grid-template-columns:1fr 1fr; gap:1cqw; text-align:center; font-size:.82cqw; line-height:1.2; padding:.65cqw 0; border-bottom:.1cqw solid #444; }
-.news-business>span+span { border-left:.1cqw solid #777; }
-.news-body { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); flex:1; gap:1.2cqw; padding-top:1cqw; font-size:.9cqw; line-height:1.18; text-align:justify; }
-.news-body>span+span { border-left:.1cqw solid #aaa; padding-left:1cqw; }
-.news-body strong { display:block; font-size:1.32cqw; font-weight:400; line-height:1.1; text-align:center; margin:.9cqw 0 .55cqw; }
-.news-body strong:first-child { margin-top:0; }
-.news-article::first-letter { float:left; font-size:3cqw; line-height:.85; margin:.25cqw .35cqw 0 0; }
-.news-ad-heading { text-align:center; font-size:1.6cqw; border-top:.3cqw double #333; margin-top:1cqw; padding:.65cqw 0; }
-.news-adverts { display:grid!important; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:1fr 1fr; gap:.7cqw; min-height:19cqw; }
-.advert { border:.1cqw solid #444; padding:.65cqw .45cqw; text-align:center; font-size:.83cqw; line-height:1.18; display:flex!important; flex-direction:column; justify-content:center; }
-.advert b { font-family:"UnifrakturCook","UnifrakturMaguntia",serif; font-size:1.75cqw; font-weight:700; line-height:1.03; margin-bottom:.5cqw; }
-.advert.double { border:.4cqw double #333; }
-.advert.ornate { outline:.08cqw solid #555; outline-offset:-.55cqw; }
-.news-colophon { text-align:center; font-size:.66cqw; margin-top:.65cqw; padding-top:.4cqw; border-top:.1cqw solid #777; }
-.letter-sheet { min-height:55cqw; padding:3cqw 3.2cqw; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:1.2cqw; line-height:1.5; box-shadow:inset 0 0 3cqw #00000008; }
-.letter-sheet>span { display:block; margin-bottom:1.6cqw; }
-.letter-sheet .letter-date { text-align:right; font-size:1.3cqw; }
-.letter-sheet .letter-salutation { font-size:2cqw; }
-.letter-sheet .letter-signature { text-align:right; font-size:1.8cqw; }
 .watch-bubble { position:absolute; z-index:35; width:max-content; max-width:calc(100% - 16px); background:#fff; color:#555; border:1px solid #aaa; border-radius:8px; padding:7px 8px; box-shadow:0 5px 22px #00000012; font-family:"Roboto Slab","Gowun Dodum",serif; font-size:21px; line-height:1; white-space:nowrap; animation:bubble-in .2s ease-out; }
 .watch-bubble[hidden] { display:none; }
 .watch-bubble::after { content:""; position:absolute; top:50%; right:-6px; width:10px; height:10px; background:#fff; border-right:1px solid #aaa; border-top:1px solid #aaa; transform:translateY(-50%) rotate(45deg); }
