@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;family=Playfair+Display:wght@400&amp;family=Roboto+Slab:wght@400&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=ribbon-pearls-6">
+  <link rel="stylesheet" href="style.css?v=square-ribbon-grey-7">
 </head>
 <body>
   <svg class="effect-definitions" aria-hidden="true" width="0" height="0"><defs><clipPath id="ribbon-front-clip" clipPathUnits="objectBoundingBox"><path d="M0 .4H.18V.62H.34V1H0Z M.78 .3H1V1H.78Z M.6 0H1V.37H.6Z"/></clipPath><filter id="logo-grain" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="4" result="noise"><animate attributeName="seed" values="4;12;7;19" dur=".13s" repeatCount="indefinite" calcMode="discrete"/></feTurbulence><feColorMatrix in="noise" type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in" result="grain"/><feBlend in="SourceGraphic" in2="grain" mode="screen"/></filter></defs></svg>
@@ -47,8 +47,8 @@
       {id:'gloves',label:'여성용 흰 장갑 — 비밀 서랍',image:'engraved-gloves.png',x:57.29296875,y:51.3955078125,width:36.9140625,angle:-21,layer:11,text:"NG\n타임라인 외부의 컨택\n대응할 여력이 부족합니다"}
     ];
     const decorations = [
-      {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-contour-v2.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
-      {id:'ribbon-front',label:'앞쪽으로 드리운 푸른 리본',image:'blue-ribbon-contour-v2.png',x:0,y:0,width:100,height:100,angle:0,layer:8,ribbon:true,colored:true,front:true},
+      {id:'ribbon-back',label:'푸른 비단 리본',image:'blue-ribbon-square-ends.png',x:0,y:0,width:100,height:100,angle:0,layer:1,ribbon:true,colored:true},
+      {id:'ribbon-front',label:'앞쪽으로 드리운 푸른 리본',image:'blue-ribbon-square-ends.png',x:0,y:0,width:100,height:100,angle:0,layer:8,ribbon:true,colored:true,front:true},
       {id:'candle',label:'촛대와 초',image:'engraved-candle.png',x:68,y:1,width:31.25,angle:8,layer:12,offsetX:-2,offsetY:33},
       {id:'letter-sheet',label:'신문 아래의 편지글',image:'engraved-letter-bright.png',x:42,y:42,width:44,angle:10,layer:2},
       {id:'watch',label:'회중시계 — 작은 비밀',action:'watch',image:'engraved-watch.png',x:19.78,y:70.952,width:29.44,angle:-18,layer:10,offsetX:20,offsetY:-20},
@@ -56,8 +56,8 @@
     ];
     // 참고 이미지의 베이지색 점을 따라 낱알 진주를 배치합니다(중심 좌표 %).
     const pearlPositions=[
-      [59,11.5,4.6],[58,16,4.8],[95,6,5.8],[5.4,19.2,4.6],
-      [4.9,40.4,6],[96,42.5,4.8],[96,62,6],[95,64,4.2],
+      [59.7,13.9,4.6],[58,16,4.8],[94.7,6.1,5.8],[5.4,19.2,4.6],
+      [4.9,40.4,6],[96,42.5,4.8],[95.7,62,6],[93.4,64.2,4.2],
       [20.5,78.4,4.7],[23.6,81.1,3.5],[65.5,84.8,4.3],[68.9,88.8,5.4],
       [51.2,89.5,4.4],[11.6,90,5.7]
     ];
@@ -126,6 +126,7 @@
     }
     window.addEventListener('resize',positionWatchBubble);
     function activate(item,element){
+      if(item.ribbon)return;
       if(item.popup){selectObject(item,element);return;}
       nudge(element);
       if(item.action==='watch'){
@@ -139,16 +140,16 @@
     const itemByElement=new Map();
     function placeItem(item,popup){
       item.popup=popup;
-      const element=document.createElement('button');
-      element.type='button';
+      const element=document.createElement(item.ribbon?'div':'button');
+      if(!item.ribbon)element.type='button';
       element.className='object';
       element.dataset.object=item.id;
       if(item.id==='postcard')element.classList.add('photo-postcard');
       if(item.colored)element.classList.add('colored-object');
-      if(item.ribbon)element.classList.add('ribbon-object');
+      if(item.ribbon){element.classList.add('ribbon-object');element.setAttribute('aria-hidden','true');}
       if(item.front)element.classList.add('ribbon-front');
       if(item.height)element.style.height=item.height+'%';
-      element.setAttribute('aria-label',item.label);
+      if(!item.ribbon)element.setAttribute('aria-label',item.label);
       if(popup){element.setAttribute('aria-controls','reading-window');element.setAttribute('aria-expanded','false');}
       if(item.action==='watch'){watchButton=element;element.setAttribute('aria-controls','watch-bubble');element.setAttribute('aria-expanded','false');}
       for(const [name,value] of Object.entries({x:item.x+'%',y:item.y+'%',width:item.width+'%',angle:item.angle+'deg',layer:item.layer,'offset-x':(item.offsetX||0)+'px','offset-y':(item.offsetY||0)+'px'}))element.style.setProperty('--'+name,value);
@@ -238,7 +239,11 @@
         const candidates=[...new Set(document.elementsFromPoint(event.clientX,event.clientY).map(e=>e.closest('.object')).filter(e=>e&&collage.contains(e)))];
         target=candidates.find(element=>hitsInk(element,event));
       }
-      if(target&&itemByElement.has(target))activate(itemByElement.get(target),target);
+      if(target&&itemByElement.has(target)){
+        const item=itemByElement.get(target);
+        if(item.ribbon)return;
+        activate(item,target);
+      }
       else hideWatchBubble();
     });
     document.addEventListener('click',event=>{if(!collage.contains(event.target))hideWatchBubble();});

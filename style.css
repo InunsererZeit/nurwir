@@ -1,4 +1,4 @@
-:root { color-scheme: light; --ink:#222; --accent:#ffae68; }
+:root { color-scheme: light; --ink:#222; --accent:#8d8d8d; }
 * { box-sizing:border-box; }
 body { margin:0; background:#fff; color:var(--ink); font-family:"Roboto Slab","Gowun Dodum",serif; -webkit-font-smoothing:antialiased; }
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
@@ -66,10 +66,12 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 
 /* 별도 PNG 자산: 흑백 종이, 색을 보존하는 리본과 모노톤 낱알 진주. */
 .colored-object img { filter:none; }
-.ribbon-object { height:100%; overflow:hidden; filter:drop-shadow(0 1px 1px #00000012); }
+.ribbon-object { cursor:default; height:100%; overflow:hidden; filter:drop-shadow(0 1px 1px #00000012); }
 .ribbon-object img { position:absolute; left:0; top:-8.3%; width:100%; height:117%; object-fit:fill; }
 .ribbon-object::after { mask-size:100% 117%; -webkit-mask-size:100% 117%; mask-position:left 0 top -10.144cqw; -webkit-mask-position:left 0 top -10.144cqw; }
 .ribbon-front { clip-path:url(#ribbon-front-clip); }
 .number-marker { position:absolute; z-index:30; display:grid; place-items:center; width:clamp(22.5px,5.4cqw,30px); aspect-ratio:1; padding:0; border:0; border-radius:47% 52% 49% 46%; background:#211e1c; color:#fff; font-family:"Roboto Slab",serif; font-size:clamp(12px,3cqw,17.25px); line-height:1; transform:translate(-50%,-50%); box-shadow:0 2px 2px #00000016; }
 .number-marker:focus-visible { outline:2px solid #4A70A9; outline-offset:4px; }
 .number-marker:hover { background:#34312e; }
+
+.site-footer>span:first-child { letter-spacing:-.035em; }
