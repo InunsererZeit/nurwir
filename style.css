@@ -4,11 +4,11 @@ body { margin:0; background:#fff; color:var(--ink); font-family:"Roboto Slab","G
 button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
 .page { max-width:600px; width:100%; min-height:100svh; margin:auto; padding:16px 14px; display:flex; flex-direction:column; opacity:0; transition:opacity .4s ease; }
 main { width:100%; margin:auto 0; padding:0; }
-/* 모든 기기에서 같은 비율과 배치. 좌표는 index.html의 objects에서 수정합니다. */
+
 .collage { position:relative; width:min(100%,540px,calc(78svh - 10px)); aspect-ratio:900 / 1100; container-type:inline-size; margin:0 auto; isolation:isolate; }
 .object { position:absolute; left:calc(var(--x) + var(--offset-x,0px)); top:calc(var(--y) + var(--offset-y,0px)); width:var(--width); z-index:var(--layer); padding:0; border:0; background:transparent; transform:rotate(var(--angle)); transform-origin:50% 55%; transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .35s; filter:drop-shadow(0 3px 2px rgba(0,0,0,.2)); }
 .object img { display:block; width:100%; height:auto; filter:grayscale(1) brightness(.94) contrast(.96); user-select:none; }
-/* 이미지 모양을 마스크로 사용해 투명한 여백에는 색을 입히지 않습니다. */
+
 .object::after { content:""; position:absolute; inset:0; background:var(--accent); -webkit-mask:var(--image) center / 100% 100% no-repeat; mask:var(--image) center / 100% 100% no-repeat; opacity:0; mix-blend-mode:multiply; pointer-events:none; transition:opacity .35s; }
 .object.is-selected::after { opacity:.30; }
 .object:focus-visible { outline:1px dashed #777; outline-offset:7px; }
@@ -23,17 +23,14 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 @keyframes open-note { from { opacity:0; transform:translate(-50%,calc(-50% + 6px)); } to { opacity:1; transform:translate(-50%,-50%); } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; } }
 
-/* 흰 단색 배경의 3줄 로고: 등장 → 0.75초 후 블러와 함께 퇴장 */
-.intro-screen { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; background:#fff; opacity:1; transition:opacity .28s ease .14s,visibility 0s .42s; }
+.intro-screen { position:fixed; inset:0; z-index:1000; background:#fff; opacity:1; transition:opacity .28s ease .14s,visibility 0s .42s; }
 .intro-screen[hidden] { display:none; }
 .intro-leaving .intro-brand { animation:logo-depart .42s ease-in both; }
 .intro-leaving .intro-screen { opacity:0; visibility:hidden; }
 .intro-leaving .page { opacity:1; transition-delay:.14s; }
 @keyframes logo-depart { 0% { opacity:1; filter:blur(0) url(#logo-grain); transform:translateY(0) scale(1); } 45% { opacity:.85; filter:blur(3px) url(#logo-grain); } 100% { opacity:0; filter:blur(13px) url(#logo-grain); transform:translateY(-12px) scale(1.035); } }
 @keyframes logo-arrive { from { opacity:0; transform:translateY(16px); filter:blur(3px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
-@media(prefers-reduced-motion:reduce) { .intro-brand,.intro-leaving .intro-brand { transform:none; filter:none; } }
 
-/* 모든 사물은 클릭 가능. 팝업이 없는 사물도 살짝 움직입니다. */
 
 .object.is-nudging { animation:object-nudge .65s cubic-bezier(.2,.8,.2,1); }
 .object.is-nudging::after { animation:object-tint .65s ease; }
@@ -45,12 +42,10 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .watch-bubble span { display:block; }
 @keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
 
-/* 보정한 원본 사진은 왜곡 없이 얇은 엽서 테두리 안에 배치합니다. */
 
-/* 필터 정의와 양쪽 푸터 */
+
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
-.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.02em; flex-shrink:0; }
-
+.site-footer { display:flex; justify-content:space-between; gap:20px; padding:12px 36px 0; color:#999; font-size:calc(9px + 2pt); line-height:12px; letter-spacing:.02em; flex-shrink:0; align-items:flex-start; font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; font-weight:700; font-synthesis:weight; }
 
 .copy strong { font-weight:700; -webkit-text-stroke:0; }
 
@@ -61,23 +56,18 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .solar-forward-icon { width:16px; height:16px; flex:0 0 16px; margin-top:5px; color:inherit; }
 .glove-note-text { min-width:0; }
 
-/* 별도 PNG 자산: 흑백 종이, 색을 보존하는 리본과 모노톤 낱알 진주. */
 .colored-object img { filter:none; }
 .ribbon-object { cursor:default; height:100%; overflow:hidden; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); }
 .ribbon-object img { position:absolute; left:0; top:-8.3%; width:100%; height:117%; object-fit:fill; }
-.ribbon-object::after { mask-size:100% 117%; -webkit-mask-size:100% 117%; mask-position:left 0 top -10.144cqw; -webkit-mask-position:left 0 top -10.144cqw; }
 .ribbon-front { clip-path:url(#ribbon-front-clip); }
 .number-marker { position:absolute; z-index:30; display:grid; place-items:center; width:clamp(22.5px,5.4cqw,30px); aspect-ratio:1; padding:0; border:0; border-radius:47% 52% 49% 46%; background:#211e1c; color:#fff; font-family:"Roboto Slab",serif; font-size:clamp(12px,3cqw,17.25px); line-height:1; transform:translate(-50%,-50%); box-shadow:0 2px 2px #00000016; }
 .number-marker:focus-visible { outline:2px solid #4A70A9; outline-offset:4px; }
 .number-marker:hover { background:#34312e; }
 
+.number-marker[aria-expanded="true"] { background:#e9914c; color:#fff; }
 
-.number-marker[aria-expanded="true"],.number-marker[aria-expanded="true"]:hover { background:#e9914c; color:#fff; }
-
-/* 앞쪽 레이어는 형태를 따르는 80% 투명 그림자로 깊이만 살짝 더합니다. */
 .object.foreground-object { filter:drop-shadow(0 .7cqw .75cqw rgba(0,0,0,.2)); }
 
-/* 모바일 글 창은 내용까지 90% 비율로 축소하되 닫기 터치 영역은 유지합니다. */
 @media(max-width:600px) {
   dialog { width:calc(67.5% - 3.6px); max-width:265.05px; }
   .window-body { padding:39.6px 21.6px 21.6px; }
@@ -86,32 +76,25 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
   .copy .glove-note { gap:5.4px; }
   .solar-forward-icon { width:14.4px; height:14.4px; flex-basis:14.4px; margin-top:4.5px; }
   .close { top:7.2px; right:7.2px; font-size:19.8px; -webkit-appearance:none; appearance:none; }
-  .close:focus,.close:focus-visible { outline:none; box-shadow:none; }
   .close:hover,.close:focus,.close:focus-visible,.close:active { background:transparent; outline:none; box-shadow:none; }
 }
 
 .object[data-object="gloves"] img { filter:grayscale(1) brightness(.99) contrast(.96); }
-.site-footer { align-items:flex-start; }
 .site-footer>span:first-child { flex:1; min-width:0; line-height:1.4; }
 .site-footer>span:last-child { white-space:nowrap; line-height:1.4; }
 
-.site-footer { font-family:"Gowun Dodum",sans-serif; font-weight:700; font-synthesis:weight; }
 @media(max-width:600px) { .site-footer .footer-period { display:block; white-space:nowrap; } }
 
-/* 고운돋움 원본의 라틴 서브셋을 푸터에서 확실히 로드합니다. */
 @font-face { font-family:FooterGowunDodum; font-style:normal; font-weight:400; font-display:swap; src:url("https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJG0CduU.woff2") format("woff2"); }
-.site-footer { font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
 
 @media(max-width:600px) { .site-footer>span:first-child { white-space:nowrap; } }
 @media(max-width:360px) { .site-footer { padding-left:24px; padding-right:24px; gap:12px; } }
 
-/* 글자 부분은 실제로 뚫린 마스크, 형광펜은 줄바꿈마다 이어집니다. */
 .name-badge { display:inline-block; width:2.77em; height:1.69em; vertical-align:-.43em; line-height:1; }
 .name-badge svg { display:block; width:100%; height:100%; font-family:"Gowun Dodum",sans-serif; }
 .text-highlight { color:inherit; background:linear-gradient(to bottom,transparent 65%,rgba(244,174,82,.48) 65%,rgba(244,174,82,.48) 91%,transparent 91%) left center / 100% 100% no-repeat; -webkit-box-decoration-break:clone; box-decoration-break:clone; padding:0 .08em; animation:highlight-draw .75s ease-out both; }
 @keyframes highlight-draw { from { background-size:0% 100%; } to { background-size:100% 100%; } }
 
-/* 참고 구도: 위의 세 정보, 중앙 로고, 아래 안내문과 계정명. */
 .intro-composition { position:absolute; left:50%; top:var(--opening-top,10svh); translate:-50% 0; width:min(90vw,540px); height:var(--opening-height,80svh); color:#444; font-family:FooterGowunDodum,"Gowun Dodum",sans-serif; }
 .intro-composition p { margin:0; }
 .intro-topline { position:absolute; top:0; inset-inline:clamp(24px,6vw,40px); display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:12px; font-size:calc(clamp(8px,1.8vw,11px) + 1.5px); line-height:1.65; animation:metadata-arrive .35s ease-out both; }
@@ -125,11 +108,9 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .name-badge text { -webkit-text-stroke:0; }
 @keyframes metadata-arrive { from { opacity:0; translate:0 6px; } to { opacity:1; translate:0 0; } }
 
-/* 중앙 텍스트 대신 사용자 로고 이미지: 기존 등장·그레인·블러 퇴장을 유지합니다. */
 .intro-brand { position:absolute; left:50%; top:50%; translate:-50% -50%; display:block; width:clamp(170px,44vw,230px); height:auto; animation:logo-arrive .35s cubic-bezier(.2,.75,.2,1) both; }
 .intro-disclaimer>.intro-label { font-size:calc(1em + 1.5px); }
 
-/* 원본 로고의 글자 형태를 보존하고 색상만 다크 그레이로 보정합니다. */
 .intro-brand img { display:block; width:100%; height:auto; filter:grayscale(1) brightness(1.22); }
 
 .age-value { display:inline-flex; align-items:center; gap:.03em; white-space:nowrap; }
