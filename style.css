@@ -43,7 +43,8 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 @keyframes object-tint { 0%,100% { opacity:0; } 35%,65% { opacity:.72; } }
 .printed-object { text-align:left; }
 .printed-object::after { mask:none; -webkit-mask:none; }
-.newspaper,.letter-sheet { display:block; background:#fafafa; color:#202020; border:.1cqw solid #999; overflow:hidden; }
+.letter-sheet { display:block; background:#fafafa; color:#202020; border:.1cqw solid #999; overflow:hidden; }
+.letter-sheet { display:block; background:#fafafa; color:#202020; border:.1cqw solid #999; overflow:hidden; }
 .newspaper { font-family:"UnifrakturMaguntia",serif; display:flex; flex-direction:column; aspect-ratio:620 / 760; padding:2.8%; box-shadow:inset 0 0 2cqw #00000009; }
 .newspaper span { display:block; }
 .news-datebar { display:flex!important; justify-content:space-between; font-size:.8cqw; border-top:.15cqw solid #222; padding:.5cqw 0; }
@@ -75,8 +76,6 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 @keyframes bubble-in { from { opacity:0; translate:0 4px; } to { opacity:1; translate:0 0; } }
 
 /* 보정한 원본 사진은 왜곡 없이 얇은 엽서 테두리 안에 배치합니다. */
-.photo-postcard { padding:1cqw; background:#fcfcfc; border:.12cqw solid #aaa; }
-.photo-postcard::after { mask:none; -webkit-mask:none; }
 
 /* 필터 정의와 양쪽 푸터 */
 .effect-definitions { position:absolute; pointer-events:none; overflow:hidden; }
@@ -92,3 +91,13 @@ dialog[open] { display:flex; flex-direction:column; animation:open-note .25s eas
 .copy .glove-note { display:inline-flex; align-items:flex-start; gap:6px; width:100%; vertical-align:top; white-space:normal; }
 .solar-forward-icon { width:16px; height:16px; flex:0 0 16px; margin-top:5px; color:inherit; }
 .glove-note-text { min-width:0; }
+
+/* 별도 PNG 자산: 흑백 종이, 색을 보존하는 리본과 낱알 진주. */
+.colored-object img { filter:none; }
+.ribbon-object { height:100%; overflow:hidden; filter:drop-shadow(0 1px 1px #00000012); }
+.ribbon-object img { position:absolute; left:0; top:-8.3%; width:100%; height:117%; object-fit:fill; }
+.ribbon-object::after { mask-size:100% 117%; -webkit-mask-size:100% 117%; mask-position:left 0 top -10.144cqw; -webkit-mask-position:left 0 top -10.144cqw; }
+.ribbon-front { clip-path:url(#ribbon-front-clip); }
+.number-marker { position:absolute; z-index:30; display:grid; place-items:center; width:clamp(30px,7.2cqw,40px); aspect-ratio:1; padding:0; border:0; border-radius:47% 52% 49% 46%; background:#211e1c; color:#fff; font-family:"Roboto Slab",serif; font-size:clamp(16px,4cqw,23px); line-height:1; transform:translate(-50%,-50%); box-shadow:0 2px 2px #00000016; }
+.number-marker:focus-visible { outline:2px solid #4A70A9; outline-offset:4px; }
+.number-marker:hover { background:#34312e; }
